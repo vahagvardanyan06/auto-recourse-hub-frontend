@@ -1,16 +1,14 @@
 import ProductCard from "@/components/ProductCard";
 import Each from "../Each";
-import { Box, Grid, Modal } from "@mui/material";
+import { Grid } from "@mui/material";
 import IProductsProps from "./types";
 import { IProduct } from "@/pages/types";
-import { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 
 const Products = ({ products }: IProductsProps) => {
-  console.log(products);
-
   const language = useSelector(selectLanguage);
+
   return (
     <>
       <Grid
@@ -22,10 +20,12 @@ const Products = ({ products }: IProductsProps) => {
           of={products}
           render={(product: IProduct) => (
             <ProductCard
-              src={product.images[0]}
+              src={product.images[0].url}
               type={product.product_name[language]}
               price={product.price}
               phoneNumber={product.contactInfo.phoneNumber}
+              id={product?.id || product["_id"]}
+              category_name={product.category_name}
             />
           )}
         />

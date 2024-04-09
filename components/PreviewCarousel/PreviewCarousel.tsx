@@ -4,13 +4,14 @@ import IPreviewCarousel from "./types";
 
 const PreviewCarousel = ({ images }: IPreviewCarousel) => {
   const isMobile = useIsMobile();
+  console.log("prview images", images);
 
   return (
     <Carousel stopAutoPlayOnHover>
-      {images.map((src: string) => (
+      {images.map((url) => (
         <img
-          style={{ height: isMobile ? 220 : 550 }}
-          src={src}
+          style={{ maxHeight: isMobile ? 220 : 550 }}
+          src={url}
           className="object-contain, w-full"
         />
       ))}

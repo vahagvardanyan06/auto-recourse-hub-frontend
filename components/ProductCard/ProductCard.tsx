@@ -4,6 +4,8 @@ import IProductType from "./types";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import productCardText from "@/messages/productCard";
+import { useCallback, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const ProductCard = ({
   src,
@@ -11,13 +13,37 @@ const ProductCard = ({
   price,
   phoneNumber,
   onContactButtonClick,
+  id,
+  category_name,
 }: IProductType) => {
   const language = useSelector(selectLanguage);
+  const { push } = useRouter();
 
+  const handleItemClick = useCallback(() => {
+    push(`/${category_name}/${id}`);
+  }, []);
+  useEffect(() => {
+    console.log(
+      "Log :::  :::",
+      src,
+      type,
+      price,
+      phoneNumber,
+      onContactButtonClick,
+      id,
+      category_name
+    );
+  }, []);
   return (
     <Grid item xs={2} sm={4} md={4}>
-      <Card className="h-full flex flex-col justify-between">
-        <CardMedia component="img" height="200" image={src} alt={type} />
+      <Card className="h-full flex flex-col justify-between cursor-pointer">
+        <CardMedia
+          component="img"
+          height="200"
+          image={src}
+          alt={type}
+          onClick={handleItemClick}
+        />
         <div className="ml-2 flex flex-col flex-wrap">
           <Typography className="w-fit font-inter text-xs font-medium leading-7 tracking-normal text-center capitalize">
             {type}

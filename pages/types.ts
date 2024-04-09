@@ -3,25 +3,35 @@ interface IApp {
   topProducts: IProduct[];
 }
 
-export interface ICategory {
-  category_name: string;
+interface ILogo_url {
   id: string;
-  logo_url: string;
+  url: string;
+}
+
+export interface ICategory {
+  name?: string;
+  category_name: ILanguages;
+  id: string;
+  logo_url: ILogo_url;
   products: IProduct[];
 }
 
 export interface IProduct {
   contactInfo: IContactInfo;
   description: ILanguages;
-  images: string[];
+  images: ILogo_url[];
   price: string;
-  product_name: string;
+  product_name: ILanguages;
   topSale: boolean;
+  id: string;
+  _id?: string;
+  category_name: string;
 }
 
 export interface IContactInfo {
   fullname: string;
   phoneNumber: string;
+  email?: string;
 }
 
 export interface ILanguages {

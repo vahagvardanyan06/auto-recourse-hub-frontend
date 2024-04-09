@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import Each from "../Each";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import IProductTypeCards from "./types";
@@ -7,7 +7,7 @@ import { ICategory } from "@/pages/types";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import { useRouter } from "next/router";
-import getCategoryName from "@/utils/getCategoryName";
+import getSplitedName from "@/utils/getSplitedName";
 
 const ProductTypeCards = ({ categories }: IProductTypeCards) => {
   const isMobile = useIsMobile();
@@ -16,13 +16,15 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
 
   const handleProductTypeClick = useCallback(
     (categoryId: string, category_name: string) => {
-      console.log(category_name);
-
-      const splitedCategoyName = getCategoryName(category_name);
+      const splitedCategoyName = getSplitedName(category_name);
       push(`/${splitedCategoyName}`);
     },
     [push]
   );
+
+  useEffect(() => {
+    console.log(categories);
+  });
 
   return (
     <div
@@ -33,10 +35,10 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
         <>
           <div
             key={item.id}
-            className="flex flex-col items-center justify-center gap-4 "
+            className="flex flex-col items-center justify-center gap-4 cursor-pointer"
             onClick={() => handleProductTypeClick(item.id, item.name)}
           >
-            <img src={item.logo_url} height={200} width={200} />
+            <img src={item.logo_url.url} height={200} width={200} />
             <Typography
               style={{
                 fontSize: "1rem",

@@ -5,7 +5,7 @@ const getImagesFromProducts = (products: IProduct[]) => {
 
   products.forEach((item) => {
     if (item.images && Array.isArray(item.images)) {
-      item.images.forEach((url: string) => {
+      item.images.forEach(({ url }: { url: string }) => {
         if (typeof url === "string") {
           urls.push(url);
         }

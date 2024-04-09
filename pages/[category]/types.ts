@@ -1,11 +1,6 @@
-import { ILanguages, IProduct } from "../types";
+import { ICategory } from "../types";
 
-interface ICategory {
-  data: {
-    category_name: ILanguages;
-    id: string;
-    logo_url: string;
-    products: IProduct[];
-  };
+interface ICategoryTypes {
+  data: ICategory;
 }
-export default ICategory;
+export default ICategoryTypes;

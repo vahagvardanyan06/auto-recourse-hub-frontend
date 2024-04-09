@@ -1,18 +1,15 @@
+import { API_BASE_URL } from "@/tmp/endpoints";
 import { GetServerSidePropsContext } from "next/types";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { params } = context;
-  const categoryId = params?.category as string;
-  const spitedCtaegoryId = categoryId.split("-");
-  const id = spitedCtaegoryId[spitedCtaegoryId.length - 1];
+  console.log(params);
 
-  const categoryName = decodeURIComponent(
-    spitedCtaegoryId.slice(0, -1).join(" ")
-  );
+  const categoryName = params?.category as string;
 
-  const res = await fetch(`http://localhost:3002/${id}`);
+  const res = await fetch(`${API_BASE_URL}/category/name/${categoryName}`);
   const data = await res.json();
 
   if (!data.category_name) {
@@ -21,14 +18,6 @@ export const getServerSideProps = async (
     };
   }
 
-  if (
-    categoryName &&
-    categoryName !== data?.category_name["us"].toLowerCase()
-  ) {
-    return {
-      notFound: true,
-    };
-  }
   return {
     props: {
       data,

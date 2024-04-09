@@ -1,4 +1,4 @@
-import { IProduct } from "@/pages/types";
+import { ILanguages } from "@/constants/languages";
 
 export default interface IProductType {
   src: string;
@@ -6,4 +6,6 @@ export default interface IProductType {
   price: string;
   phoneNumber?: string;
   onContactButtonClick?: () => void;
+  id?: string;
+  category_name: string;
 }
