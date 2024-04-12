@@ -11,12 +11,15 @@ import deleteProduct from "@/utils/deleteProduct";
 import admin_texts from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
 import { useRouter } from "next/router";
+import { ICategory, IProduct } from "@/pages/types";
 
 const DeleteProduct = () => {
   const { reload } = useRouter();
 
-  const [categories, setCategories] = useState(null);
-  const [currentProdcuts, setCurrentProducts] = useState(null);
+  const [categories, setCategories] = useState<ICategory[] | null>(null);
+  const [currentProdcuts, setCurrentProducts] = useState<IProduct[] | null>(
+    null
+  );
   const [selectValue, setSelectValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,6 +27,7 @@ const DeleteProduct = () => {
     (async () => {
       const categories_res = await fetch("http://localhost:3002/category");
       const result_categories = await categories_res.json();
+
       setCategories(result_categories);
     })();
   });
@@ -35,8 +39,9 @@ const DeleteProduct = () => {
           `http://localhost:3002/category/name/${selectValue}`
         );
         const products = await products_res.json();
+        console.log("products--->", products);
 
-        setCurrentProducts(products);
+        setCurrentProducts(products.products);
       })();
     }
   }, [selectValue]);
@@ -73,10 +78,10 @@ const DeleteProduct = () => {
         </Select>
         {currentProdcuts && (
           <div className="flex flex-wrap gap-5 ">
-            {currentProdcuts.products &&
-              currentProdcuts.products.map((product) => (
+            {currentProdcuts &&
+              currentProdcuts.map((product) => (
                 <CloseCard
-                  url={product.images[0].url}
+                  url={product.images[0]?.url}
                   closeCallback={() => handleProductDelete(product.id)}
                 />
               ))}

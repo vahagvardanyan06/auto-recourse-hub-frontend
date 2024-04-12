@@ -20,7 +20,7 @@ const Products = ({ products }: IProductsProps) => {
           of={products}
           render={(product: IProduct) => (
             <ProductCard
-              src={product.images[0].url}
+              src={product.images[0]?.url}
               type={product.product_name[language]}
               price={product.price}
               phoneNumber={product.contactInfo.phoneNumber}

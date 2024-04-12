@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9fda7ae7-85c7-4528-8876-a41b1f46f7f2" name="Changes" comment="" />
+    <list default="true" id="9fda7ae7-85c7-4528-8876-a41b1f46f7f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/components/AdminHeader/AdminHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AdminHeader/AdminHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/PreviewCarousel/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/PreviewCarousel/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductTypeCards/ProductTypeCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductTypeCards/ProductTypeCards.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/UpdateCategory/UpdateCategory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/UpdateCategory/UpdateCategory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[category]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[category]/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getImagesFromProducts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/getImagesFromProducts.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,23 +22,23 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2eS491Y1mRuPkFQSxD30f1DAAYj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

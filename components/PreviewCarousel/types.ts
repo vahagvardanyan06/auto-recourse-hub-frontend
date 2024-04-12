@@ -1,5 +1,5 @@
 interface IPreviewCarousel {
-  images: { id: string; url: string }[];
+  images: string[];
 }
 
 export default IPreviewCarousel;

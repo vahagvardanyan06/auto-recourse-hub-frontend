@@ -24,6 +24,7 @@ const admin_texts = {
   },
   buttons: {
     uploadLogo: "Upload Logo",
+    uploadImages: "Upload Images",
     createCategory: "Create",
     deleteCategory: "Delete Ctaegory",
     editCategory: "Edit Category",

@@ -135,6 +135,7 @@ const UpdateCategory = () => {
             body: formData,
           }
         );
+
         const data = await response.json();
         console.log("data--->", data);
 

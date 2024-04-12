@@ -27,6 +27,7 @@ function AdminHeader({ activePage, setIsActivePage }: IAdminHeader) {
   return (
     <AppBar position="static">
       <Tabs
+        className="overflow-scroll "
         value={activePage}
         onChange={(_, value) => handleTabChange(value)}
         textColor="inherit"

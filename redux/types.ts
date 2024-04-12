@@ -1,5 +1,5 @@
 export interface ILanguageState {
-  value: string;
+  value: "us" | "am" | "ru";
 }
 
 export default interface IRootState {

@@ -9,11 +9,13 @@ const PreviewCarousel = ({ images }: IPreviewCarousel) => {
   return (
     <Carousel stopAutoPlayOnHover>
       {images.map((url) => (
-        <img
-          style={{ maxHeight: isMobile ? 220 : 550 }}
-          src={url}
-          className="object-contain, w-full"
-        />
+        <div className="w-full flex items-center justify-center">
+          <img
+            style={{ maxHeight: isMobile ? 220 : 550 }}
+            src={url}
+            className="object-contain"
+          />
+        </div>
       ))}
     </Carousel>
   );

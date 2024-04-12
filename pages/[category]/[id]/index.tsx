@@ -20,13 +20,17 @@ const Page = ({ categoryData, productData }: IProductById) => {
   const previewImagges = productData.images;
 
   const productsToShown = useMemo(() => {
-    return categoryData.products.filter((item) => item._id !== productData.id);
+    return categoryData.products.filter((item) => item.id !== productData.id);
   }, [categoryData.products, productData._id]);
+
+  const previewImages = useMemo(() => {
+    return productData.images.map((image) => image.url);
+  }, [productData]);
 
   return (
     <Layout>
       <Container maxWidth="lg" className="w-full gap-3 flex flex-col">
-        <PreviewCarousel images={previewImagges} />
+        <PreviewCarousel images={previewImages} />
         <Typography> {productData.product_name[language]} </Typography>
         <Typography className="text-yellow-400">{productData.price}</Typography>
         <CategoryName category_name={categoryData.category_name[language]} />

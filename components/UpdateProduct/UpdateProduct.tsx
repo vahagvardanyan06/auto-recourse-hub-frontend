@@ -2,11 +2,13 @@ import admin_texts from "@/constants/admin";
 import { TextField, Typography, Button, Divider } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { IProduct } from "@/pages/types";
+import { ILogo_url, IProduct } from "@/pages/types";
 import getJwtToken from "@/utils/getJwtToken";
+import CloseCard from "../CloseCard/CloseCard";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const UpdateProduct = () => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState<IProduct[] | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
   const [initialProductData, setInitialProductData] = useState<IProduct | null>(
     null
@@ -21,6 +23,9 @@ const UpdateProduct = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [fullName, setFullName] = useState("");
+  const [productImages, setProductImages] = useState<ILogo_url[]>([]);
+  const [deletedImages, setDeletedImages] = useState([]);
+  const [addedImages, setAddedImages] = useState([]);
 
   const handleSelectProduct = useCallback(
     (product: IProduct) => {
@@ -33,9 +38,10 @@ const UpdateProduct = () => {
       setProductDescriptionRU(product.description.ru);
       setProductDescriptionUS(product.description.us);
       setProductPrice(product.price);
-      setEmail(product.contactInfo.email);
+      setEmail(product.contactInfo.email || "");
       setPhoneNumber(product.contactInfo.phoneNumber);
       setFullName(product.contactInfo.fullname);
+      setProductImages(product.images);
     },
     [setSelectedProduct]
   );
@@ -79,16 +85,27 @@ const UpdateProduct = () => {
           formData.append("price", productPrice);
         }
         if (email !== initialProductData.contactInfo.email) {
-          formData.append("contact_info[email]", email);
+          formData.append("contactInfo[email]", email);
         }
         if (phoneNumber !== initialProductData.contactInfo.phoneNumber) {
-          formData.append("contact_info[number]", phoneNumber);
+          formData.append("contactInfo[phoneNumber]", phoneNumber);
         }
         if (fullName !== initialProductData.contactInfo.fullname) {
-          formData.append("contact_info[full_name]", fullName);
+          formData.append("contactInfo[fullname]", fullName);
+        }
+        if (deletedImages.length) {
+          deletedImages.forEach((imageId) => {
+            formData.append("imageIds[]", imageId);
+          });
+        }
+        if (addedImages.length) {
+          addedImages.forEach((file: any) => {
+            formData.append(`images`, file, file.name);
+          });
         }
 
         console.log(formData);
+        console.log("deleted images", deletedImages);
 
         if (formData.getAll.length === 0) {
           console.log("No changes to update.");
@@ -113,6 +130,24 @@ const UpdateProduct = () => {
       }
     }
   };
+
+  const handleImaeCloseClick = useCallback(
+    (idToRemove: string) => {
+      setDeletedImages((prev) => [...prev, idToRemove]);
+      setProductImages((prevImages) =>
+        prevImages.filter((image) => image.id !== idToRemove)
+      );
+    },
+    [setProductImages]
+  );
+
+  const handleLogoInputChange = useCallback(
+    (e) => {
+      const newFiles = Array.from(e.target.files);
+      setAddedImages([...newFiles]);
+    },
+    [setAddedImages]
+  );
 
   return products ? (
     <div className="w-full flex flex-col items-center gap-10 p-5">
@@ -261,6 +296,29 @@ const UpdateProduct = () => {
               />
             </div>
           </div>
+          <div className="w-full flex flex-wrap gap-5">
+            {productImages.map(({ url, id }) => (
+              <CloseCard
+                url={url}
+                closeCallback={() => handleImaeCloseClick(id)}
+              />
+            ))}
+          </div>
+          <Button
+            className="h-1/2 "
+            variant="contained"
+            component="label"
+            startIcon={<CloudUploadIcon />}
+          >
+            {admin_texts.buttons.uploadImages}
+            <input
+              accept="image/*"
+              multiple
+              type="file"
+              style={{ display: "none" }}
+              onChange={handleLogoInputChange}
+            />
+          </Button>
           <Button onClick={handleUpdateProduct} variant="contained">
             {admin_texts.buttons.updateProduct}
           </Button>

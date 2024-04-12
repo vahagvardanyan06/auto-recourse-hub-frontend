@@ -135,8 +135,8 @@ const CreateCategory = () => {
       )}
       <div>
         <Button
+          className="w-full"
           component="label"
-          role={undefined}
           variant="contained"
           tabIndex={-1}
           startIcon={<CloudUploadIcon />}

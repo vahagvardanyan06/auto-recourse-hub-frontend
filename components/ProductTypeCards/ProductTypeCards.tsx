@@ -28,7 +28,7 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
 
   return (
     <div
-      className="flex w-full justify-around items-center overflow-x-auto"
+      className="flex w-full justify-around items-center overflow-x-auto gap-5"
       style={{ flexDirection: isMobile ? "column" : "row" }}
     >
       {categories.map((item: ICategory) => (
@@ -38,7 +38,13 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
             className="flex flex-col items-center justify-center gap-4 cursor-pointer"
             onClick={() => handleProductTypeClick(item.id, item.name)}
           >
-            <img src={item.logo_url.url} height={200} width={200} />
+            <img
+              src={item.logo_url.url}
+              // height={200}
+              width={200}
+              style={{ maxHeight: 200 }}
+              className="object-contain"
+            />
             <Typography
               style={{
                 fontSize: "1rem",

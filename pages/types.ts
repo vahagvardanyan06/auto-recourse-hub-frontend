@@ -3,7 +3,7 @@ interface IApp {
   topProducts: IProduct[];
 }
 
-interface ILogo_url {
+export interface ILogo_url {
   id: string;
   url: string;
 }
