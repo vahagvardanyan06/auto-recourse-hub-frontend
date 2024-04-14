@@ -4,7 +4,7 @@ import IProductType from "./types";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import productCardText from "@/messages/productCard";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useRouter } from "next/router";
 
 const ProductCard = ({
@@ -22,18 +22,7 @@ const ProductCard = ({
   const handleItemClick = useCallback(() => {
     push(`/${category_name}/${id}`);
   }, []);
-  useEffect(() => {
-    console.log(
-      "Log :::  :::",
-      src,
-      type,
-      price,
-      phoneNumber,
-      onContactButtonClick,
-      id,
-      category_name
-    );
-  }, []);
+
   return (
     <Grid item xs={2} sm={4} md={4}>
       <Card className="h-full flex flex-col justify-between cursor-pointer">
@@ -57,7 +46,7 @@ const ProductCard = ({
 
         <a href={`tel:${phoneNumber}`} className="w-full">
           <Button
-            className="bg-yellow-200 border-none hover:border-none w-full"
+            className="bg-yellow-400 border-none hover:border-none w-full"
             variant="outlined"
             startIcon={<CallIcon />}
             onClick={onContactButtonClick}

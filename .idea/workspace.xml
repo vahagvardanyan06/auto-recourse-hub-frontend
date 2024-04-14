@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9fda7ae7-85c7-4528-8876-a41b1f46f7f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/components/AdminHeader/AdminHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AdminHeader/AdminHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/PreviewCarousel/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/PreviewCarousel/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ProductTypeCards/ProductTypeCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductTypeCards/ProductTypeCards.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/UpdateCategory/UpdateCategory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/UpdateCategory/UpdateCategory.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/[category]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[category]/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/getImagesFromProducts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/getImagesFromProducts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/fetchApp.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/fetchApp.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/deleteCategory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/deleteCategory.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,15 +30,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "Errors",
+    "ts.external.directory.path": "/Users/vahagnvardanyan/Documents/other/auto-recourse-hub/auto-recourse-hub-frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

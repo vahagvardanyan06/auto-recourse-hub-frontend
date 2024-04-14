@@ -6,8 +6,11 @@ import { ILogo_url, IProduct } from "@/pages/types";
 import getJwtToken from "@/utils/getJwtToken";
 import CloseCard from "../CloseCard/CloseCard";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { API_BASE_URL } from "@/tmp/endpoints";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const UpdateProduct = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<IProduct[] | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
   const [initialProductData, setInitialProductData] = useState<IProduct | null>(
@@ -24,7 +27,7 @@ const UpdateProduct = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [fullName, setFullName] = useState("");
   const [productImages, setProductImages] = useState<ILogo_url[]>([]);
-  const [deletedImages, setDeletedImages] = useState([]);
+  const [deletedImages, setDeletedImages] = useState<string[]>([]);
   const [addedImages, setAddedImages] = useState([]);
 
   const handleSelectProduct = useCallback(
@@ -49,10 +52,9 @@ const UpdateProduct = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("http://localhost:3002/products");
+        const res = await fetch(`${API_BASE_URL}/products`);
         const data = await res.json();
         setProducts(data.products);
-        console.log("products--->", data.products);
       } catch (err) {
         console.log("Failed fetch categories", err);
       }
@@ -61,6 +63,7 @@ const UpdateProduct = () => {
 
   const handleUpdateProduct = async () => {
     if (selectedProduct && initialProductData) {
+      setIsLoading(true);
       try {
         const formData = new FormData();
         if (productNameAM !== initialProductData.product_name.am) {
@@ -104,34 +107,27 @@ const UpdateProduct = () => {
           });
         }
 
-        console.log(formData);
-        console.log("deleted images", deletedImages);
-
         if (formData.getAll.length === 0) {
-          console.log("No changes to update.");
           return;
         }
         const TOKEN = getJwtToken();
 
-        const response = await fetch(
-          `http://localhost:3002/products/${selectedProduct.id}`,
-          {
-            method: "PATCH",
-            headers: {
-              Authorization: `Bearer ${TOKEN}`,
-            },
-            body: formData,
-          }
-        );
-        const data = await response.json();
-        console.log("Updated product:", data);
+        await fetch(`${API_BASE_URL}/products/${selectedProduct.id}`, {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+          },
+          body: formData,
+        });
+
+        setIsLoading(false);
       } catch (error) {
         console.error("Error updating product:", error);
       }
     }
   };
 
-  const handleImaeCloseClick = useCallback(
+  const handleImageCloseClick = useCallback(
     (idToRemove: string) => {
       setDeletedImages((prev) => [...prev, idToRemove]);
       setProductImages((prevImages) =>
@@ -148,6 +144,12 @@ const UpdateProduct = () => {
     },
     [setAddedImages]
   );
+
+  const handleRemoveAddedImage = (indexToRemove: number) => {
+    setAddedImages((prevImages) =>
+      prevImages.filter((_, index) => index !== indexToRemove)
+    );
+  };
 
   return products ? (
     <div className="w-full flex flex-col items-center gap-10 p-5">
@@ -300,7 +302,13 @@ const UpdateProduct = () => {
             {productImages.map(({ url, id }) => (
               <CloseCard
                 url={url}
-                closeCallback={() => handleImaeCloseClick(id)}
+                closeCallback={() => handleImageCloseClick(id)}
+              />
+            ))}
+            {addedImages.map((file, index) => (
+              <CloseCard
+                url={URL.createObjectURL(file)}
+                closeCallback={() => handleRemoveAddedImage(index)}
               />
             ))}
           </div>
@@ -319,9 +327,13 @@ const UpdateProduct = () => {
               onChange={handleLogoInputChange}
             />
           </Button>
-          <Button onClick={handleUpdateProduct} variant="contained">
+          <LoadingButton
+            loading={isLoading}
+            onClick={handleUpdateProduct}
+            variant="contained"
+          >
             {admin_texts.buttons.updateProduct}
-          </Button>
+          </LoadingButton>
         </div>
       )}
     </div>

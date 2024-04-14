@@ -1,11 +1,5 @@
-import React, { useCallback, useState } from "react";
-import {
-  TextField,
-  Typography,
-  Button,
-  styled,
-  FormControl,
-} from "@mui/material";
+import React, { ChangeEvent, useCallback, useState } from "react";
+import { TextField, Typography, Button, styled } from "@mui/material";
 import admin_texts from "@/constants/admin";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloseIcon from "@mui/icons-material/Close";
@@ -28,8 +22,10 @@ const VisuallyHiddenInput = styled("input")({
 
 const CreateCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | ArrayBuffer | null>(
+    null
+  );
   const [categoryNames, setCategoryNames] = useState({
     category_name: {
       am: "",
@@ -40,8 +36,8 @@ const CreateCategory = () => {
 
   const { reload } = useRouter();
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       setSelectedFile(file);
       const reader = new FileReader();

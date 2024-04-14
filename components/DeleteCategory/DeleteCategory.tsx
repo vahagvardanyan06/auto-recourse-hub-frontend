@@ -1,5 +1,7 @@
 import admin_texts from "@/constants/admin";
+import { ICategory } from "@/pages/types";
 import deleteCategory from "@/utils/deleteCategory";
+import fetchCategories from "@/utils/fetchCategory";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
@@ -7,8 +9,10 @@ import { useCallback, useEffect, useState } from "react";
 
 const DeleteCategory = () => {
   const { reload } = useRouter();
-  const [categories, setCategories] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [categories, setCategories] = useState<ICategory[] | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(
+    null
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   const handleCategoryClick = (category: any) => {
@@ -19,7 +23,7 @@ const DeleteCategory = () => {
     setIsLoading(true);
     try {
       const res = await deleteCategory(cat.id);
-      reload();
+      // reload();
     } catch (err) {
       console.log(err);
       reload();
@@ -28,14 +32,8 @@ const DeleteCategory = () => {
 
   useEffect(() => {
     (async () => {
-      try {
-        const res = await fetch(`http://localhost:3002/category`);
-        const categories_response = await res.json();
-        setCategories(categories_response);
-        console.log(categories_response);
-      } catch (err) {
-        console.log(err);
-      }
+      const categories_res = await fetchCategories();
+      setCategories(categories_res);
     })();
   }, []);
 

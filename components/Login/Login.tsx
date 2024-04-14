@@ -46,7 +46,7 @@ const Login = () => {
       password: data.get("password"),
     });
 
-    const res = await fetch("http://localhost:3002/auth/signin", {
+    const res = await fetch(`${API_BASE_URL}/auth/signin`, {
       method: "POST",
       headers: {
         Accept: "*/*",

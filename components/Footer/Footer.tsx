@@ -67,9 +67,8 @@ export default function Footer() {
       </Box>
       <div className="mb-2">
         <Typography variant="body2" color="text.secondary" align="center">
-          {"Copyright © "}
-          <Link color="inherit" href="https://your-website.com/">
-            Your Website
+          <Link color="inherit" href="https://kargo.am/">
+            kargo.am
           </Link>{" "}
           {new Date().getFullYear()}
           {"."}

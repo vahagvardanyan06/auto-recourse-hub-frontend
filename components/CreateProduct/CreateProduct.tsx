@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import admin_texts from "@/constants/admin";
 import {
   TextField,
@@ -14,6 +20,8 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import postProduct from "@/utils/postProduct";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
+import { ICategory } from "@/pages/types";
+import fetchCategories from "@/utils/fetchCategory";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -30,7 +38,7 @@ const VisuallyHiddenInput = styled("input")({
 const CreateProduct = () => {
   const { reload } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [categories, setCategories] = useState(null);
+  const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<null | string>(
     null
   );
@@ -45,18 +53,12 @@ const CreateProduct = () => {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [isTopSale, setIsTopSale] = useState(false);
-  const [imagesFiles, setImagesFiles] = useState([]);
+  const [imagesFiles, setImagesFiles] = useState<File[]>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
   useEffect(() => {
     (async () => {
-      try {
-        const res = await fetch("http://localhost:3002/category");
-        const categories_res = await res.json();
-        setCategories(categories_res);
-      } catch (err) {
-        console.log(err);
-      }
+      setCategories(await fetchCategories());
     })();
   }, []);
 
@@ -68,12 +70,12 @@ const CreateProduct = () => {
   );
 
   const handleFormSubmit = useCallback(
-    async (e) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setIsLoading(true);
 
       try {
-        const res = await postProduct({
+        await postProduct({
           productNameAM,
           productNameRU,
           productNameUS,
@@ -113,14 +115,27 @@ const CreateProduct = () => {
   );
 
   const handleImageInputChange = useCallback(
-    (e: any) => {
-      const newFiles = Array.from(e.target.files);
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const files = e.target.files;
+
+      if (!files) return;
+
+      const newFiles = Array.from(files);
+
+      if (newFiles.length === 0) return;
+
       setImagesFiles((prevFiles: File[]) => [...prevFiles, ...newFiles]);
 
-      const previews: File[] = [];
+      const previews: string[] = [];
       for (let i = 0; i < newFiles.length; i++) {
-        previews.push(URL.createObjectURL(newFiles[i]));
+        const file = newFiles[i];
+        if (file.type.startsWith("image/")) {
+          previews.push(URL.createObjectURL(file));
+        } else {
+          console.error(`File ${file.name} is not an image.`);
+        }
       }
+
       setImagePreviews((prevPreviews: string[]) => [
         ...prevPreviews,
         ...previews,
@@ -311,7 +326,7 @@ const CreateProduct = () => {
               }
               required
             >
-              {categories.map((category) => (
+              {categories.map((category: ICategory) => (
                 <MenuItem key={category.id} value={category.id}>
                   {category.category_name.us}
                 </MenuItem>

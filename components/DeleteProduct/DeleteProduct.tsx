@@ -12,6 +12,7 @@ import admin_texts from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
 import { useRouter } from "next/router";
 import { ICategory, IProduct } from "@/pages/types";
+import { API_BASE_URL } from "@/tmp/endpoints";
 
 const DeleteProduct = () => {
   const { reload } = useRouter();
@@ -25,7 +26,7 @@ const DeleteProduct = () => {
 
   useEffect(() => {
     (async () => {
-      const categories_res = await fetch("http://localhost:3002/category");
+      const categories_res = await fetch(`${API_BASE_URL}/category`);
       const result_categories = await categories_res.json();
 
       setCategories(result_categories);
@@ -36,10 +37,9 @@ const DeleteProduct = () => {
     if (selectValue) {
       (async () => {
         const products_res = await fetch(
-          `http://localhost:3002/category/name/${selectValue}`
+          `${API_BASE_URL}/category/name/${selectValue}`
         );
         const products = await products_res.json();
-        console.log("products--->", products);
 
         setCurrentProducts(products.products);
       })();

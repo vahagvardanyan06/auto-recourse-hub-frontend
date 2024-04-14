@@ -15,18 +15,7 @@ import CloseCard from "../CloseCard/CloseCard";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import getJwtToken from "@/utils/getJwtToken";
 import { useRouter } from "next/router";
-
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
+import { API_BASE_URL } from "@/tmp/endpoints";
 
 const UpdateCategory = () => {
   const { reload } = useRouter();
@@ -42,7 +31,7 @@ const UpdateCategory = () => {
 
   useEffect(() => {
     (async () => {
-      const categories_res = await fetch("http://localhost:3002/category");
+      const categories_res = await fetch(`${API_BASE_URL}/category`);
       const categories_result = await categories_res.json();
       console.log(categories_result);
 
@@ -55,7 +44,7 @@ const UpdateCategory = () => {
     if (selectValue) {
       (async () => {
         const category_res = await fetch(
-          `http://localhost:3002/category/name/${selectValue}`
+          `${API_BASE_URL}/category/name/${selectValue}`
         );
         const category = await category_res.json();
         console.log(category);
@@ -86,7 +75,7 @@ const UpdateCategory = () => {
     setIsLoading(true);
     if (selectedCategory) {
       try {
-        const initialCategory = categories.find(
+        const initialCategory = categories?.find(
           (category) => category.id === selectedCategory.id
         );
         const formData = new FormData();
@@ -126,7 +115,7 @@ const UpdateCategory = () => {
 
         const TOKEN = getJwtToken();
         const response = await fetch(
-          `http://localhost:3002/category/${selectedCategory.id}`,
+          `${API_BASE_URL}/category/${selectedCategory.id}`,
           {
             method: "PATCH",
             headers: {
@@ -140,7 +129,7 @@ const UpdateCategory = () => {
         console.log("data--->", data);
 
         if (data.status === 200) {
-          //   reload();
+          reload();
           setIsLoading(false);
         }
       } catch (error) {
@@ -237,7 +226,7 @@ const UpdateCategory = () => {
         <>
           <Divider />
 
-          <CloseCard url={logoUrl} />
+          <CloseCard url={logoUrl as string} />
           <Button
             variant="contained"
             component="label"

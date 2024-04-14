@@ -1,13 +1,19 @@
 import Carousel from "react-material-ui-carousel";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import IPreviewCarousel from "./types";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const PreviewCarousel = ({ images }: IPreviewCarousel) => {
   const isMobile = useIsMobile();
-  console.log("prview images", images);
 
   return (
-    <Carousel stopAutoPlayOnHover>
+    <Carousel
+      navButtonsAlwaysVisible
+      autoPlay={false}
+      NextIcon={<ArrowForwardIosIcon className="fill-gray-400" />}
+      PrevIcon={<ArrowBackIosIcon className="fill-gray-400" />}
+    >
       {images.map((url) => (
         <div className="w-full flex items-center justify-center">
           <img

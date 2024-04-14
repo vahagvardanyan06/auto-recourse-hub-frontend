@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "@/tmp/endpoints";
 import getJwtToken from "./getJwtToken";
 
 const postProduct = async (data: any) => {
@@ -20,10 +21,6 @@ const postProduct = async (data: any) => {
     formData.append("contactInfo[fullname]", data.fullName);
     formData.append("topSale", String(data.isTopSale));
 
-    console.log("topsale", String(data.isTopSale));
-
-    console.log("imagefiles", "image files", data.imagesFiles);
-
     if (data.imagesFiles) {
       Array.from(data.imagesFiles).forEach((file: any) => {
         formData.append(`images`, file, file.name);
@@ -32,15 +29,13 @@ const postProduct = async (data: any) => {
 
     console.log("data.selectedCategoryId", data.selectedCategoryId);
 
-    const res = await fetch("http://localhost:3002/products", {
+    const res = await fetch(`${API_BASE_URL}/products`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${TOKEN}`,
       },
       body: formData,
     });
-
-    console.log(res);
   } catch (err) {
     console.log(err);
   }

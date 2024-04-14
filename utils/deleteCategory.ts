@@ -1,18 +1,19 @@
+import { API_BASE_URL } from "@/tmp/endpoints";
 import getJwtToken from "./getJwtToken";
 
 const deleteCategory = async (categoryId: string) => {
   const TOKEN = getJwtToken();
 
   try {
-    const res = await fetch(`http://localhost:3002/category/${categoryId}`, {
+    const res = await fetch(`${API_BASE_URL}/${categoryId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TOKEN}`,
       },
     });
-    const data = await res.json();
+    console.log(res);
 
-    return data;
+    return await res.json();
   } catch (err) {
     console.log(err);
   }

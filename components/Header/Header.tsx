@@ -12,7 +12,7 @@ const Header = () => {
   }, [push]);
 
   return (
-    <AppBar className="bg-yellow-200 fixed ">
+    <AppBar className="bg-yellow-400 fixed ">
       <Container maxWidth="lg">
         <Toolbar className="flex justify-between">
           <Image

@@ -9,7 +9,7 @@ export interface ILogo_url {
 }
 
 export interface ICategory {
-  name?: string;
+  name: string;
   category_name: ILanguages;
   id: string;
   logo_url: ILogo_url;
