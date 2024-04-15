@@ -1,7 +1,6 @@
 import { getServerSideProps } from "@/app/api/fetchApp";
 import { Container } from "@mui/material";
 import PreviewCarousel from "@/components/PreviewCarousel";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import ProductTypeCards from "@/components/ProductTypeCards";
 import Products from "@/components/Products";
 import { useMemo } from "react";
@@ -10,8 +9,6 @@ import IApp from "./types";
 import Layout from "@/components/Layout";
 
 const Page = ({ categories, topProducts }: IApp) => {
-  const isMobile = useIsMobile();
-
   const previewImages = useMemo(
     () => getImagesFromProducts(topProducts),
     [topProducts]

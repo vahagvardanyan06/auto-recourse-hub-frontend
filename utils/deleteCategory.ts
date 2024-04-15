@@ -5,7 +5,7 @@ const deleteCategory = async (categoryId: string) => {
   const TOKEN = getJwtToken();
 
   try {
-    const res = await fetch(`${API_BASE_URL}/${categoryId}`, {
+    const res = await fetch(`${API_BASE_URL}/category/${categoryId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TOKEN}`,

@@ -4,6 +4,7 @@ import Logo from "@/public/svg/logo/tow-truck-svgrepo-com.svg";
 import Image from "next/image";
 import SelectLanguage from "@/components/SelectLanguage";
 import { useRouter } from "next/router";
+import NavSearch from "../NavSearch";
 
 const Header = () => {
   const { push } = useRouter();
@@ -12,9 +13,9 @@ const Header = () => {
   }, [push]);
 
   return (
-    <AppBar className="bg-yellow-400 fixed ">
+    <AppBar className="bg-yellow-400" position="fixed">
       <Container maxWidth="lg">
-        <Toolbar className="flex justify-between">
+        <Toolbar className="flex justify-between gap-5">
           <Image
             src={Logo.src}
             alt="logo"
@@ -23,6 +24,7 @@ const Header = () => {
             onClick={handleLogoClick}
             className="cursor-pointer"
           />
+          <NavSearch />
           <SelectLanguage />
         </Toolbar>
       </Container>
