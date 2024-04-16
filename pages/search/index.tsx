@@ -4,13 +4,16 @@ import Layout from "@/components/Layout";
 import NotSearchResult from "@/components/NotSearchResult/NotSearchResult";
 import ISearch from "./types";
 import Products from "@/components/Products";
+import { Container } from "@mui/material";
 
 const Search = ({ searchData }: ISearch) => {
   console.log("search data--->", searchData);
 
   return (
     <Layout>
-      {searchData ? <Products products={searchData} /> : <NotSearchResult />}
+      <Container maxWidth="lg">
+        {searchData ? <Products products={searchData} /> : <NotSearchResult />}
+      </Container>
     </Layout>
   );
 };

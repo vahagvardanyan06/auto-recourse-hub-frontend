@@ -23,7 +23,7 @@ const DeleteCategory = () => {
     setIsLoading(true);
     try {
       const res = await deleteCategory(cat.id);
-      // reload();
+      reload();
     } catch (err) {
       console.log(err);
       reload();

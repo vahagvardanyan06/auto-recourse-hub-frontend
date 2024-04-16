@@ -45,7 +45,7 @@ const SelectLanguage = () => {
               value={code}
               className="flex justify-between"
             >
-              <ReactCountryFlag countryCode={code} />
+              <ReactCountryFlag countryCode={code} className="pr-1" />
               <span>{native_name}</span>
             </MenuItem>
           ))}

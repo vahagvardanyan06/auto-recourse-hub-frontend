@@ -32,6 +32,7 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
           <div
             className="flex flex-col items-center justify-center gap-4 cursor-pointer"
             onClick={() => handleProductTypeClick(item.name)}
+            style={{ height: 200, width: 200 }}
           >
             <img
               src={item.logo_url.url}

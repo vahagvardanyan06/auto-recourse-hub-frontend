@@ -26,11 +26,14 @@ const ProductCard = ({
   return (
     <Grid item xs={2} sm={4} md={4}>
       <Card className="h-full flex flex-col justify-between cursor-pointer">
-        <div onClick={handleItemClick}>
+        <div
+          onClick={handleItemClick}
+          className="flex flex-col justify-between h-full"
+        >
           {src && (
             <CardMedia
               component="img"
-              height={"200px"}
+              height="200px"
               style={{ maxHeight: "200px", objectFit: "contain" }}
               image={src}
               alt={type}
@@ -48,10 +51,10 @@ const ProductCard = ({
           <Button
             className="bg-yellow-400 border-none hover:border-none w-full"
             variant="outlined"
-            startIcon={<CallIcon />}
+            startIcon={<CallIcon className="fill-red-500" />}
             onClick={onContactButtonClick}
           >
-            <Typography className="w-fit font-inter  font-medium leading-7 tracking-normal text-center capitalize">
+            <Typography className="w-fit font-inter  font-medium leading-7 tracking-normal text-center capitalize text-red-500">
               {productCardText.contact[language]}
             </Typography>
           </Button>

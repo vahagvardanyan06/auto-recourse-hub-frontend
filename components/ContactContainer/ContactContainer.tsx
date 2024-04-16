@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 
 const ContactContainer = ({
-  contactInfo: { fullname, phoneNumber },
+  contactInfo: { fullname, phoneNumber, email },
 }: IContactContainer) => {
   const language = useSelector(selectLanguage);
   return (
@@ -13,11 +13,15 @@ const ContactContainer = ({
       <Divider />
 
       <Typography>{contact_texts.contact[language]}</Typography>
-      <div className="flex gap-1">
+      <div className="flex gap-2">
         <Typography>{contact_texts.tel[language]}</Typography>
         <Typography className="cursor-pointer text-blue-400">
           <a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
         </Typography>
+      </div>
+      <div className="flex gap-2">
+        <Typography>{contact_texts.email[language]}</Typography>
+        <Typography>{email}</Typography>
       </div>
       <div>
         <Typography>{fullname}</Typography>

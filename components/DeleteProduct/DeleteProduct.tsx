@@ -53,7 +53,9 @@ const DeleteProduct = () => {
   const handleProductDelete = useCallback(async (id: string) => {
     setIsLoading(!isLoading);
     const res = await deleteProduct(id);
-    reload();
+    console.log(res, "res");
+
+    // reload();
   }, []);
 
   useEffect(() => {

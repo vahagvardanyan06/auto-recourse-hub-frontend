@@ -9,6 +9,11 @@ const contact_texts = {
     us: "Tel.",
     am: "Հեռ.",
   },
+  email: {
+    ru: "Эл.",
+    us: "Email",
+    am: "Էլ.",
+  },
 };
 
 export default contact_texts;

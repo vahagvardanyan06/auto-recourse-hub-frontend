@@ -55,9 +55,11 @@ const NavSearch = () => {
   const handleSubmit = useCallback(
     (event: ChangeEvent<HTMLFormElement>) => {
       event.preventDefault();
-      push(`/search?q=${searchValue}`);
+      if (searchValue) {
+        push(`/search?q=${searchValue}`);
+      }
     },
-    [push]
+    [push, searchValue]
   );
 
   const handleChange = useCallback(

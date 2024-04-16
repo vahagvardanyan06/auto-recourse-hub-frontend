@@ -17,7 +17,9 @@ const Page = ({ categories, topProducts }: IApp) => {
   return (
     <Layout>
       <Container maxWidth="lg" className="flex flex-col gap-12">
-        <PreviewCarousel images={previewImages} />
+        {Boolean(previewImages.length) && (
+          <PreviewCarousel images={previewImages} />
+        )}
         <ProductTypeCards categories={categories} />
         <Products products={topProducts} />
       </Container>

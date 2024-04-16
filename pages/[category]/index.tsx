@@ -7,16 +7,14 @@ import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import Layout from "@/components/Layout";
 
-const Page = ({
-  data: { category_name, products },
-}: ICategoryTypes) => {
+const Page = ({ data: { category_name, products } }: ICategoryTypes) => {
   console.log("products", products);
 
   const language = useSelector(selectLanguage);
 
   return (
     <Layout>
-      <Container maxWidth="lg" className="w-full">
+      <Container maxWidth="lg" className="w-full gap-5 flex flex-col">
         <div className="w-full flex content-center justify-center">
           <Typography className="capitalize font-serif text-lg">
             {category_name[language]}
