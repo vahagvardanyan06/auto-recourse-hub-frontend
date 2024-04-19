@@ -7,6 +7,8 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import postCategory, { IOptions } from "@/utils/postCategory";
 import { useRouter } from "next/router";
 import CloseCard from "../CloseCard/CloseCard";
+import useNotification from "@/hooks/useNotification";
+import admin_messages from "@/messages/admin";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -21,6 +23,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const CreateCategory = () => {
+  const { displayNotification } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | ArrayBuffer | null>(
@@ -34,7 +37,7 @@ const CreateCategory = () => {
     },
   });
 
-  const { reload } = useRouter();
+  const { success, error } = admin_messages.createCategory;
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -62,14 +65,13 @@ const CreateCategory = () => {
 
     console.log("Form submitted with data:", data);
 
-    try {
-      const res = await postCategory(data);
-      console.log(res);
-
-      reload();
-    } catch (err) {
-      console.log(err);
+    const res = await postCategory(data);
+    if (res.success) {
+      displayNotification({ message: success });
+    } else {
+      displayNotification({ message: error, type: "error" });
     }
+    setIsLoading(false);
   };
 
   const handleNameChange = (e, lang) => {

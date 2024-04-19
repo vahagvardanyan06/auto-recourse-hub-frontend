@@ -9,9 +9,11 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { API_BASE_URL } from "@/tmp/endpoints";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useRouter } from "next/router";
+import useNotification from "@/hooks/useNotification";
+import admin_messages from "@/messages/admin";
 
 const UpdateProduct = () => {
-  const { reload } = useRouter();
+  const { displayNotification } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<IProduct[] | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
@@ -32,6 +34,7 @@ const UpdateProduct = () => {
   const [deletedImages, setDeletedImages] = useState<string[]>([]);
   const [addedImages, setAddedImages] = useState<File[]>([]);
 
+  const { success, error } = admin_messages.updateProduct;
   const handleSelectProduct = useCallback(
     (product: IProduct) => {
       setSelectedProduct(product);
@@ -122,10 +125,11 @@ const UpdateProduct = () => {
           body: formData,
         });
 
+        displayNotification({ message: success });
         setIsLoading(false);
-        reload();
-      } catch (error) {
-        console.error("Error updating product:", error);
+      } catch (err) {
+        displayNotification({ message: error, type: "error" });
+        setIsLoading(false);
       }
     }
   };

@@ -21,7 +21,7 @@ export const getServerSideProps = async (
 
   const categoryData = await category_res.json();
 
-  if (categoryData.statusCode === 404 || productData.statusCode === 404) {
+  if (!categoryData || !productData) {
     return {
       notFound: true,
     };

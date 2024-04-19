@@ -13,9 +13,11 @@ import CloseCard from "../CloseCard/CloseCard";
 import { useRouter } from "next/router";
 import { ICategory, IProduct } from "@/pages/types";
 import { API_BASE_URL } from "@/tmp/endpoints";
+import useNotification from "@/hooks/useNotification";
+import admin_messages from "@/messages/admin";
 
 const DeleteProduct = () => {
-  const { reload } = useRouter();
+  const { displayNotification } = useNotification();
 
   const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [currentProdcuts, setCurrentProducts] = useState<IProduct[] | null>(
@@ -23,6 +25,8 @@ const DeleteProduct = () => {
   );
   const [selectValue, setSelectValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const { success, error } = admin_messages.deleteProduct;
 
   useEffect(() => {
     (async () => {
@@ -53,9 +57,11 @@ const DeleteProduct = () => {
   const handleProductDelete = useCallback(async (id: string) => {
     setIsLoading(!isLoading);
     const res = await deleteProduct(id);
-    console.log(res, "res");
-
-    // reload();
+    if (res.success) {
+      displayNotification({ message: success });
+    } else {
+      displayNotification({ message: error });
+    }
   }, []);
 
   useEffect(() => {

@@ -16,9 +16,11 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import getJwtToken from "@/utils/getJwtToken";
 import { useRouter } from "next/router";
 import { API_BASE_URL } from "@/tmp/endpoints";
+import useNotification from "@/hooks/useNotification";
+import admin_messages from "@/messages/admin";
 
 const UpdateCategory = () => {
-  const { reload } = useRouter();
+  const { displayNotification } = useNotification();
 
   const [selectValue, setSelectValue] = useState("");
   const [categories, setCategories] = useState<ICategory[] | null>(null);
@@ -28,6 +30,8 @@ const UpdateCategory = () => {
   );
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [updatedtLogoFile, setUpdatedLogoFile] = useState<File | null>(null);
+
+  const { success, error } = admin_messages.updateCategory;
 
   useEffect(() => {
     (async () => {
@@ -129,11 +133,11 @@ const UpdateCategory = () => {
         console.log("data--->", data);
 
         if (data.status === 200) {
-          reload();
+          displayNotification({ message: success });
           setIsLoading(false);
         }
-      } catch (error) {
-        console.error("Error updating category:", error);
+      } catch (err) {
+        displayNotification({ message: error, type: "error" });
       }
     }
   };

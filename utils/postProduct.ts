@@ -37,7 +37,7 @@ const postProduct = async (data: any) => {
       body: formData,
     });
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 

@@ -22,6 +22,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import { ICategory } from "@/pages/types";
 import fetchCategories from "@/utils/fetchCategory";
+import useNotification from "@/hooks/useNotification";
+import admin_messages from "@/messages/admin";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -37,6 +39,7 @@ const VisuallyHiddenInput = styled("input")({
 
 const CreateProduct = () => {
   const { reload } = useRouter();
+  const { displayNotification } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<null | string>(
@@ -56,6 +59,8 @@ const CreateProduct = () => {
   const [imagesFiles, setImagesFiles] = useState<File[]>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
+  const { success, error } = admin_messages.createProduct;
+
   useEffect(() => {
     (async () => {
       setCategories(await fetchCategories());
@@ -74,28 +79,27 @@ const CreateProduct = () => {
       e.preventDefault();
       setIsLoading(true);
 
-      try {
-        await postProduct({
-          productNameAM,
-          productNameRU,
-          productNameUS,
-          productDescriptionAM,
-          productDescriptionUS,
-          productDescriptionRU,
-          price,
-          phoneNumber,
-          email,
-          fullName,
-          isTopSale,
-          selectedCategoryId,
-          imagesFiles,
-        });
-        reload();
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-        setIsLoading(false);
+      const res = await postProduct({
+        productNameAM,
+        productNameRU,
+        productNameUS,
+        productDescriptionAM,
+        productDescriptionUS,
+        productDescriptionRU,
+        price,
+        phoneNumber,
+        email,
+        fullName,
+        isTopSale,
+        selectedCategoryId,
+        imagesFiles,
+      });
+      if (res?.success) {
+        displayNotification({ message: success });
+      } else {
+        displayNotification({ message: error, type: "error" });
       }
+      reload();
     },
     [
       productNameAM,

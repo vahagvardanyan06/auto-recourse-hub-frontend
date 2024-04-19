@@ -1,4 +1,6 @@
 import admin_texts from "@/constants/admin";
+import useNotification from "@/hooks/useNotification";
+import admin_messages from "@/messages/admin";
 import { ICategory } from "@/pages/types";
 import deleteCategory from "@/utils/deleteCategory";
 import fetchCategories from "@/utils/fetchCategory";
@@ -8,12 +10,14 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 
 const DeleteCategory = () => {
-  const { reload } = useRouter();
+  const { displayNotification } = useNotification();
   const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(
     null
   );
   const [isLoading, setIsLoading] = useState(false);
+
+  const { success, error } = admin_messages.deleteCategory;
 
   const handleCategoryClick = (category: any) => {
     setSelectedCategory(category);
@@ -21,12 +25,11 @@ const DeleteCategory = () => {
 
   const handleDeleteClick = useCallback(async (cat: any) => {
     setIsLoading(true);
-    try {
-      const res = await deleteCategory(cat.id);
-      reload();
-    } catch (err) {
-      console.log(err);
-      reload();
+    const res = await deleteCategory(cat.id);
+    if (res.succes) {
+      displayNotification({ message: success });
+    } else {
+      displayNotification({ message: error, type: "error" });
     }
   }, []);
 
