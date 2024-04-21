@@ -10,8 +10,10 @@ const deleteProduct = async (id: string) => {
         Authorization: `Bearer ${TOKEN}`,
       },
     });
+    return res.json();
   } catch (err) {
     console.log(err);
+    return err;
   }
 };
 

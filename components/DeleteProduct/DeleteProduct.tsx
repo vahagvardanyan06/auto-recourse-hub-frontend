@@ -38,7 +38,7 @@ const DeleteProduct = () => {
   });
 
   useEffect(() => {
-    if (selectValue) {
+    if (selectValue && !isLoading) {
       (async () => {
         const products_res = await fetch(
           `${API_BASE_URL}/category/name/${selectValue}`
@@ -48,7 +48,7 @@ const DeleteProduct = () => {
         setCurrentProducts(products.products);
       })();
     }
-  }, [selectValue]);
+  }, [selectValue, isLoading]);
 
   const handleSelectChange = useCallback((event: any) => {
     setSelectValue(event.target.value);
@@ -57,11 +57,14 @@ const DeleteProduct = () => {
   const handleProductDelete = useCallback(async (id: string) => {
     setIsLoading(!isLoading);
     const res = await deleteProduct(id);
-    if (res.success) {
+    console.log("res", res);
+
+    if (res?.success) {
       displayNotification({ message: success });
     } else {
-      displayNotification({ message: error });
+      displayNotification({ message: error, type: "error" });
     }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {

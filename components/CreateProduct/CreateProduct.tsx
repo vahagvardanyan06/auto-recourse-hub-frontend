@@ -94,6 +94,9 @@ const CreateProduct = () => {
         selectedCategoryId,
         imagesFiles,
       });
+
+      console.log("create product res--->", res);
+
       if (res?.success) {
         displayNotification({ message: success });
       } else {

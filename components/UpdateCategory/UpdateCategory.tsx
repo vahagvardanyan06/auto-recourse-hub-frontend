@@ -132,7 +132,7 @@ const UpdateCategory = () => {
         const data = await response.json();
         console.log("data--->", data);
 
-        if (data.status === 200) {
+        if (data?.success) {
           displayNotification({ message: success });
           setIsLoading(false);
         }

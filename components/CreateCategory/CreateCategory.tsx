@@ -63,9 +63,9 @@ const CreateCategory = () => {
       logo: selectedFile,
     };
 
-    console.log("Form submitted with data:", data);
-
     const res = await postCategory(data);
+    console.log("create category res ---->", res);
+
     if (res.success) {
       displayNotification({ message: success });
     } else {

@@ -26,8 +26,11 @@ const DeleteCategory = () => {
   const handleDeleteClick = useCallback(async (cat: any) => {
     setIsLoading(true);
     const res = await deleteCategory(cat.id);
-    if (res.succes) {
+    console.log("delete category res--->", res);
+
+    if (res.success) {
       displayNotification({ message: success });
+      setIsLoading(false);
     } else {
       displayNotification({ message: error, type: "error" });
     }
@@ -38,7 +41,7 @@ const DeleteCategory = () => {
       const categories_res = await fetchCategories();
       setCategories(categories_res);
     })();
-  }, []);
+  }, [isLoading]);
 
   return (
     categories && (

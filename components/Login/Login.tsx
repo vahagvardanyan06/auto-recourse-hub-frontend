@@ -49,7 +49,6 @@ const Login = () => {
     const res = await fetch(`${API_BASE_URL}/auth/signin`, {
       method: "POST",
       headers: {
-        Accept: "*/*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
