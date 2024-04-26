@@ -13,9 +13,6 @@ import SimilarProducts from "@/components/SimilarProducts";
 import Layout from "@/components/Layout";
 
 const Page = ({ categoryData, productData }: IProductById) => {
-  console.log("categoryData--->", categoryData);
-  console.log("productData--->", productData);
-
   const language = useSelector(selectLanguage);
   const previewImagges = productData.images;
 

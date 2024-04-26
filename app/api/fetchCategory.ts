@@ -5,7 +5,6 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { params } = context;
-  console.log(params);
 
   const categoryName = params?.category as string;
 

@@ -7,8 +7,6 @@ import { adminPages } from "@/constants/admin";
 
 function AdminHeader({ activePage, setIsActivePage }: IAdminHeader) {
   const handleTabChange = useCallback((value: string) => {
-    console.log(value);
-
     setIsActivePage(value);
   }, []);
 

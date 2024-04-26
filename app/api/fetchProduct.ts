@@ -17,8 +17,6 @@ export const getServerSideProps = async (
     `${API_BASE_URL}/category/name/${productCategoryName}`
   );
 
-  console.log("product data__>", productData);
-
   const categoryData = await category_res.json();
 
   if (!categoryData || !productData) {

@@ -29,7 +29,6 @@ const Login = () => {
 
   useEffect(() => {
     const token = getJwtToken();
-    console.log(token);
 
     if (token) {
       router.push("/p/admin");
@@ -40,11 +39,6 @@ const Login = () => {
     event.preventDefault();
     setIsLoading(true);
     const data = new FormData(event.currentTarget);
-
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
 
     const res = await fetch(`${API_BASE_URL}/auth/signin`, {
       method: "POST",
@@ -60,8 +54,6 @@ const Login = () => {
     const { token } = await res.json();
 
     if (token) {
-      console.log(token);
-
       setIsLoading(false);
       sessionStorage.setItem(tokenKey, token);
       router.push("/p/admin");

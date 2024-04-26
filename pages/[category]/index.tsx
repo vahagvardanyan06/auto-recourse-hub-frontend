@@ -8,8 +8,6 @@ import { selectLanguage } from "@/redux/selectors";
 import Layout from "@/components/Layout";
 
 const Page = ({ data: { category_name, products } }: ICategoryTypes) => {
-  console.log("products", products);
-
   const language = useSelector(selectLanguage);
 
   return (

@@ -26,7 +26,6 @@ const DeleteCategory = () => {
   const handleDeleteClick = useCallback(async (cat: any) => {
     setIsLoading(true);
     const res = await deleteCategory(cat.id);
-    console.log("delete category res--->", res);
 
     if (res.success) {
       displayNotification({ message: success });

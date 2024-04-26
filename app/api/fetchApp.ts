@@ -10,8 +10,6 @@ export const getServerSideProps = async () => {
 
     const topProducts = await res_topProducts.json();
 
-    console.log("categories", categories);
-
     return {
       props: {
         categories,

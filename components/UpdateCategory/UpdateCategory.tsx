@@ -37,7 +37,6 @@ const UpdateCategory = () => {
     (async () => {
       const categories_res = await fetch(`${API_BASE_URL}/category`);
       const categories_result = await categories_res.json();
-      console.log(categories_result);
 
       setCategories(categories_result);
       setIsLoading(false);
@@ -51,7 +50,6 @@ const UpdateCategory = () => {
           `${API_BASE_URL}/category/name/${selectValue}`
         );
         const category = await category_res.json();
-        console.log(category);
 
         setSelectedCategory(category);
         if (!updatedtLogoFile) {
@@ -112,8 +110,6 @@ const UpdateCategory = () => {
           );
         }
         if (updatedtLogoFile) {
-          console.log(updatedtLogoFile);
-
           formData.append("logo", updatedtLogoFile);
         }
 
@@ -130,7 +126,6 @@ const UpdateCategory = () => {
         );
 
         const data = await response.json();
-        console.log("data--->", data);
 
         if (data?.success) {
           displayNotification({ message: success });

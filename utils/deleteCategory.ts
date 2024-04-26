@@ -11,7 +11,6 @@ const deleteCategory = async (categoryId: string) => {
         Authorization: `Bearer ${TOKEN}`,
       },
     });
-    console.log(res);
 
     return await res.json();
   } catch (err) {

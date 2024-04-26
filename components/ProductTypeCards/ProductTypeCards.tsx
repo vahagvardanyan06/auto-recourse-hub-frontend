@@ -21,10 +21,6 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
     [push]
   );
 
-  useEffect(() => {
-    console.log(categories);
-  });
-
   return (
     <Grid container justifyContent="center" spacing={isMobile ? 2 : 4}>
       {categories.map((item: ICategory) => (

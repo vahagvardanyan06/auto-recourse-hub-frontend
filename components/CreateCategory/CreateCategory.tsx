@@ -64,7 +64,6 @@ const CreateCategory = () => {
     };
 
     const res = await postCategory(data);
-    console.log("create category res ---->", res);
 
     if (res.success) {
       displayNotification({ message: success });

@@ -160,10 +160,6 @@ const CreateProduct = () => {
     [imagePreviews, setImagePreviews, imagesFiles, setImagesFiles]
   );
 
-  useEffect(() => {
-    console.log(imagePreviews);
-  }, [imagePreviews]);
-
   return (
     categories && (
       <>

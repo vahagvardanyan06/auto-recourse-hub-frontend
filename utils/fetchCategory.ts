@@ -6,7 +6,7 @@ const fetchCategories = async () => {
     const categories_response = await res.json();
     return categories_response;
   } catch (err) {
-    console.log(err);
+    console.log("Failed to fecth categories", err);
   }
 };
 

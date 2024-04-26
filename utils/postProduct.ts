@@ -4,8 +4,6 @@ import getJwtToken from "./getJwtToken";
 const postProduct = async (data: any) => {
   const TOKEN = getJwtToken();
 
-  console.log(data);
-
   try {
     const formData = new FormData();
     formData.append("product_name[am]", data.productNameAM);
@@ -26,8 +24,6 @@ const postProduct = async (data: any) => {
         formData.append(`images`, file, file.name);
       });
     }
-
-    console.log("data.selectedCategoryId", data.selectedCategoryId);
 
     const res = await fetch(`${API_BASE_URL}/products`, {
       method: "POST",

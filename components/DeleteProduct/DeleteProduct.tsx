@@ -57,7 +57,6 @@ const DeleteProduct = () => {
   const handleProductDelete = useCallback(async (id: string) => {
     setIsLoading(!isLoading);
     const res = await deleteProduct(id);
-    console.log("res", res);
 
     if (res?.success) {
       displayNotification({ message: success });

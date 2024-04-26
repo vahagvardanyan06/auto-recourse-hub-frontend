@@ -7,8 +7,6 @@ import Products from "@/components/Products";
 import { Container } from "@mui/material";
 
 const Search = ({ searchData }: ISearch) => {
-  console.log("search data--->", searchData);
-
   return (
     <Layout>
       <Container maxWidth="lg">
