@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { Button, Container, Typography } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const ErrorBoundary = () => {

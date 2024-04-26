@@ -1,5 +1,5 @@
 import { Typography, Grid } from "@mui/material";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import IProductTypeCards from "./types";
 import { ICategory } from "@/pages/types";

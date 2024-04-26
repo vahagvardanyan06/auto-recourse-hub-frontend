@@ -6,7 +6,6 @@ import deleteCategory from "@/utils/deleteCategory";
 import fetchCategories from "@/utils/fetchCategory";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Typography } from "@mui/material";
-import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 
 const DeleteCategory = () => {

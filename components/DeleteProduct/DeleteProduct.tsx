@@ -6,11 +6,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
-import CloseIcon from "@mui/icons-material/Close";
 import deleteProduct from "@/utils/deleteProduct";
 import admin_texts from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
-import { useRouter } from "next/router";
 import { ICategory, IProduct } from "@/pages/types";
 import { API_BASE_URL } from "@/tmp/endpoints";
 import useNotification from "@/hooks/useNotification";

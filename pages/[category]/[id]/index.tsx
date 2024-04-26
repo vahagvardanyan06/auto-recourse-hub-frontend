@@ -8,7 +8,6 @@ import { selectLanguage } from "@/redux/selectors";
 import CategoryName from "@/components/CategoryName";
 import ProductDescription from "@/components/ProductDescription";
 import ContactContainer from "@/components/ContactContainer";
-import Products from "@/components/Products";
 import SimilarProducts from "@/components/SimilarProducts";
 import Layout from "@/components/Layout";
 

@@ -13,7 +13,6 @@ import { updateLanguage } from "@/redux/slices/languageSlice";
 import { useRouter } from "next/router";
 
 const SelectLanguage = () => {
-  const router = useRouter();
   const dispatch = useDispatch();
   const currentLanguage = useSelector(selectLanguage);
 

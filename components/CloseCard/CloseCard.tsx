@@ -1,7 +1,7 @@
 import React from "react";
 import ICloseCard from "./types";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Divider } from "@mui/material";
+import { Button } from "@mui/material";
 
 const CloseCard = ({ url, closeCallback, alt = "" }: ICloseCard) => {
   return (
