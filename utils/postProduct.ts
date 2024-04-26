@@ -36,6 +36,7 @@ const postProduct = async (data: any) => {
       },
       body: formData,
     });
+    return await res.json();
   } catch (err) {
     return err;
   }

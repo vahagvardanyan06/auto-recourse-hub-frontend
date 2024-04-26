@@ -95,14 +95,12 @@ const CreateProduct = () => {
         imagesFiles,
       });
 
-      console.log("create product res--->", res);
-
       if (res?.success) {
         displayNotification({ message: success });
       } else {
         displayNotification({ message: error, type: "error" });
       }
-      reload();
+      setIsLoading(false);
     },
     [
       productNameAM,
