@@ -66,10 +66,6 @@ const DeleteProduct = () => {
     setIsLoading(false);
   }, []);
 
-  useEffect(() => {
-    console.log("isloading", isLoading);
-  }, [isLoading]);
-
   return categories && !isLoading ? (
     <form className="p-5 flex flex-col gap-5 w-full items-center">
       <Typography fontSize={30}>{admin_texts.titles.deleteProduct}</Typography>
