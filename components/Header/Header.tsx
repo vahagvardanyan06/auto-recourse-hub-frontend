@@ -13,6 +13,7 @@ const Header = () => {
   }, [push]);
 
   return (
+    // TODOD :: Change AppBar's background color
     <AppBar className="bg-yellow-400" position="fixed">
       <Container maxWidth="lg">
         <Toolbar className="flex justify-between gap-5">
