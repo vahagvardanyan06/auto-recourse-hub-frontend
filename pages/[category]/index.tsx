@@ -18,7 +18,7 @@ const Page = ({ data: { category_name, products } }: ICategoryTypes) => {
             {category_name[language]}
           </Typography>
         </div>
-        <Products products={products} />
+        {products && <Products products={products} />}
       </Container>
     </Layout>
   );
