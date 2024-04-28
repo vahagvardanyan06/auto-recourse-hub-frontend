@@ -3,6 +3,7 @@ import IContactContainer from "./types";
 import contact_texts from "@/messages/contact";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
+import React from "react";
 
 const ContactContainer = ({
   contactInfo: { fullname, phoneNumber, email },

@@ -1,5 +1,5 @@
 import { API_BASE_URL } from "@/tmp/endpoints";
-import { GetServerSidePropsContext, Redirect } from "next";
+import { GetServerSidePropsContext } from "next";
 
 const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   const q = query.q as string;

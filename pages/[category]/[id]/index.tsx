@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { getServerSideProps } from "@/app/api/fetchProduct";
-import IProductById from "./types";
+import { IProductById } from "../../../types/types";
 import { Container, Typography } from "@mui/material";
 import PreviewCarousel from "@/components/PreviewCarousel";
 import { useSelector } from "react-redux";
@@ -13,7 +13,6 @@ import Layout from "@/components/Layout";
 
 const Page = ({ categoryData, productData }: IProductById) => {
   const language = useSelector(selectLanguage);
-  const previewImagges = productData.images;
 
   const productsToShown = useMemo(() => {
     return categoryData.products.filter((item) => item.id !== productData.id);

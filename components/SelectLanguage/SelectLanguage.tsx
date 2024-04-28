@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import {
   FormControl,
   MenuItem,
@@ -10,7 +10,6 @@ import ReactCountryFlag from "react-country-flag";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import { updateLanguage } from "@/redux/slices/languageSlice";
-import { useRouter } from "next/router";
 
 const SelectLanguage = () => {
   const dispatch = useDispatch();

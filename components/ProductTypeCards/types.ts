@@ -1,4 +1,4 @@
-import { ICategory } from "@/pages/types";
+import { ICategory } from "@/types/types";
 
 interface IProductTypeCards {
   categories: ICategory[];

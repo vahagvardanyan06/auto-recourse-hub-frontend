@@ -1,12 +1,13 @@
 import admin_texts from "@/constants/admin";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
-import { ICategory } from "@/pages/types";
+import { ICategory } from "@/types/types";
 import deleteCategory from "@/utils/deleteCategory";
 import fetchCategories from "@/utils/fetchCategory";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Typography } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const DeleteCategory = () => {
   const { displayNotification } = useNotification();
@@ -18,11 +19,11 @@ const DeleteCategory = () => {
 
   const { success, error } = admin_messages.deleteCategory;
 
-  const handleCategoryClick = (category: any) => {
+  const handleCategoryClick = (category: ICategory) => {
     setSelectedCategory(category);
   };
 
-  const handleDeleteClick = useCallback(async (cat: any) => {
+  const handleDeleteClick = useCallback(async (cat: ICategory) => {
     setIsLoading(true);
     const res = await deleteCategory(cat.id);
 
@@ -50,6 +51,7 @@ const DeleteCategory = () => {
         <div className="flex gap-5 flex-wrap">
           {categories.map((category) => (
             <div
+              key={uuidv4()}
               style={{
                 background:
                   category.id === selectedCategory?.id
@@ -71,7 +73,7 @@ const DeleteCategory = () => {
             disabled={!selectedCategory}
             variant="contained"
             className="w-full bg-red-400"
-            onClick={() => handleDeleteClick(selectedCategory)}
+            onClick={() => handleDeleteClick(selectedCategory as ICategory)}
           >
             {admin_texts.buttons.deleteCategory}
           </LoadingButton>

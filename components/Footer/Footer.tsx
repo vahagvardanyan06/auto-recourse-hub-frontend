@@ -11,7 +11,7 @@ import footerTexts from "@/messages/footer";
 export default function Footer() {
   const language = useSelector(selectLanguage);
 
-  const { aboutUs, contactUs, followUs } = footerTexts as any;
+  const { aboutUs, contactUs } = footerTexts;
 
   return (
     <Container className="mt-5">

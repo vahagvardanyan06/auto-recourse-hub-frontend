@@ -1,4 +1,4 @@
-import { IProduct } from "@/pages/types";
+import { IProduct } from "@/types/types";
 
 const getImagesFromProducts = (products: IProduct[]) => {
   const urls: string[] = [];

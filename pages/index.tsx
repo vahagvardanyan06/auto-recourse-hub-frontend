@@ -1,3 +1,4 @@
+import React from "react";
 import { getServerSideProps } from "@/app/api/fetchApp";
 import { Container } from "@mui/material";
 import PreviewCarousel from "@/components/PreviewCarousel";
@@ -5,7 +6,7 @@ import ProductTypeCards from "@/components/ProductTypeCards";
 import Products from "@/components/Products";
 import { useMemo } from "react";
 import getImagesFromProducts from "@/utils/getImagesFromProducts";
-import IApp from "./types";
+import IApp from "../types/types";
 import Layout from "@/components/Layout";
 
 const Page = ({ categories, topProducts }: IApp) => {

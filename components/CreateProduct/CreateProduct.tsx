@@ -19,8 +19,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import postProduct from "@/utils/postProduct";
 import CloseIcon from "@mui/icons-material/Close";
-import { useRouter } from "next/router";
-import { ICategory } from "@/pages/types";
+import { ICategory } from "@/types/types";
 import fetchCategories from "@/utils/fetchCategory";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
@@ -38,7 +37,6 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const CreateProduct = () => {
-  const { reload } = useRouter();
   const { displayNotification } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<ICategory[] | null>(null);

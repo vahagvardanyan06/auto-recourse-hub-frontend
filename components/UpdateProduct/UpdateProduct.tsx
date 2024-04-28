@@ -1,16 +1,16 @@
 import admin_texts from "@/constants/admin";
 import { TextField, Typography, Button, Divider } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { ILogo_url, IProduct } from "@/pages/types";
+import { ILogo_url, IProduct } from "@/types/types";
 import getJwtToken from "@/utils/getJwtToken";
 import CloseCard from "../CloseCard/CloseCard";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { API_BASE_URL } from "@/tmp/endpoints";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { useRouter } from "next/router";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
+import { v4 as uuidv4 } from "uuid";
 
 const UpdateProduct = () => {
   const { displayNotification } = useNotification();
@@ -107,7 +107,7 @@ const UpdateProduct = () => {
           });
         }
         if (addedImages.length) {
-          addedImages.forEach((file: any) => {
+          addedImages.forEach((file: File) => {
             formData.append(`images`, file, file.name);
           });
         }
@@ -145,9 +145,9 @@ const UpdateProduct = () => {
   );
 
   const handleLogoInputChange = useCallback(
-    (e) => {
-      const newFiles = Array.from(e.target.files);
-      setAddedImages([...(newFiles as File[])]);
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const newFiles = Array.from(e.target.files || []);
+      setAddedImages(newFiles as File[]);
     },
     [setAddedImages]
   );
@@ -308,12 +308,14 @@ const UpdateProduct = () => {
           <div className="w-full flex flex-wrap gap-5">
             {productImages.map(({ url, id }) => (
               <CloseCard
+                key={uuidv4()}
                 url={url}
                 closeCallback={() => handleImageCloseClick(id)}
               />
             ))}
             {addedImages.map((file, index) => (
               <CloseCard
+                key={uuidv4()}
                 url={URL.createObjectURL(file)}
                 closeCallback={() => handleRemoveAddedImage(index)}
               />

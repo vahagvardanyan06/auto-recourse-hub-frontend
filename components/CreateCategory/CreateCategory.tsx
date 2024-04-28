@@ -1,4 +1,9 @@
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, {
+  ChangeEvent,
+  SyntheticEvent,
+  useCallback,
+  useState,
+} from "react";
 import { TextField, Typography, Button, styled } from "@mui/material";
 import admin_texts from "@/constants/admin";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -53,7 +58,7 @@ const CreateCategory = () => {
     setPreviewImage(null);
   }, [setPreviewImage]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
     const data = {
@@ -61,7 +66,7 @@ const CreateCategory = () => {
       logo: selectedFile,
     };
 
-    const res = await postCategory(data);
+    const res = await postCategory(data as IOptions);
 
     if (res.success) {
       displayNotification({ message: success });
@@ -71,7 +76,10 @@ const CreateCategory = () => {
     setIsLoading(false);
   };
 
-  const handleNameChange = (e, lang) => {
+  const handleNameChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    lang: string
+  ) => {
     const { value } = e.target;
 
     setCategoryNames((prevState) => ({
@@ -101,7 +109,7 @@ const CreateCategory = () => {
           <TextField
             className="w-full"
             placeholder={admin_texts.placeholders.categoryName.am}
-            value={categoryNames.am}
+            value={categoryNames.category_name.am}
             onChange={(e) => handleNameChange(e, "am")}
             required
           />
@@ -110,7 +118,7 @@ const CreateCategory = () => {
           <TextField
             className="w-full"
             placeholder={admin_texts.placeholders.categoryName.ru}
-            value={categoryNames.ru}
+            value={categoryNames.category_name.ru}
             onChange={(e) => handleNameChange(e, "ru")}
             required
           />
@@ -119,14 +127,17 @@ const CreateCategory = () => {
           <TextField
             className="w-full"
             placeholder={admin_texts.placeholders.categoryName.us}
-            value={categoryNames.us}
+            value={categoryNames.category_name.us}
             onChange={(e) => handleNameChange(e, "us")}
             required
           />
         </div>
       </div>
       {previewImage && (
-        <CloseCard url={previewImage} closeCallback={removePreviewImage} />
+        <CloseCard
+          url={previewImage as string}
+          closeCallback={removePreviewImage}
+        />
       )}
       <div>
         <Button

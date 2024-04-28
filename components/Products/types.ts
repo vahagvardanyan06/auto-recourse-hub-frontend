@@ -1,4 +1,4 @@
-import { IProduct } from "@/pages/types";
+import { IProduct } from "@/types/types";
 
 interface IProductsProps {
   products: IProduct[];

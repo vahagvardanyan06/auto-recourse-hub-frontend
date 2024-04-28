@@ -6,6 +6,7 @@ import { selectLanguage } from "@/redux/selectors";
 import productCardText from "@/messages/productCard";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
+import React from "react";
 
 const ProductCard = ({
   src,
@@ -15,6 +16,7 @@ const ProductCard = ({
   onContactButtonClick,
   id,
   category_name,
+  key,
 }: IProductType) => {
   const language = useSelector(selectLanguage);
   const { push } = useRouter();
@@ -24,7 +26,7 @@ const ProductCard = ({
   }, []);
 
   return (
-    <Grid item xs={2} sm={4} md={4}>
+    <Grid item xs={2} sm={4} md={4} key={key}>
       <Card className="h-full flex flex-col justify-between cursor-pointer">
         <div
           onClick={handleItemClick}

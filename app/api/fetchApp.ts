@@ -16,5 +16,9 @@ export const getServerSideProps = async () => {
         topProducts,
       },
     };
-  } catch (err) {}
+  } catch (err) {
+    return {
+      notFound: true,
+    };
+  }
 };

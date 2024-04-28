@@ -2,7 +2,7 @@ import React from "react";
 import getServerSideProps from "@/app/api/search";
 import Layout from "@/components/Layout";
 import NotSearchResult from "@/components/NotSearchResult/NotSearchResult";
-import ISearch from "./types";
+import { ISearch } from "../../types/types";
 import Products from "@/components/Products";
 import { Container } from "@mui/material";
 

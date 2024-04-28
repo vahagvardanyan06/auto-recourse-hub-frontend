@@ -1,6 +1,6 @@
 import React from "react";
 import { getServerSideProps } from "@/app/api/fetchCategory";
-import ICategoryTypes from "./types";
+import { ICategoryTypes } from "../../types/types";
 import Products from "@/components/Products";
 import { Container, Typography } from "@mui/material";
 import { useSelector } from "react-redux";

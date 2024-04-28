@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputBase, alpha, styled } from "@mui/material";
 import { useSelector } from "react-redux";

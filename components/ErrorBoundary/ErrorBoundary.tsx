@@ -24,8 +24,8 @@ const ErrorBoundary = () => {
           Oops! Something went wrong.
         </Typography>
         <Typography variant="body1" align="center">
-          We're sorry, but it looks like there was an error processing your
-          request.
+          {` We're sorry, but it looks like there was an error processing your
+          request.`}
         </Typography>
         <Button
           onClick={handleNavigateButtonClick}

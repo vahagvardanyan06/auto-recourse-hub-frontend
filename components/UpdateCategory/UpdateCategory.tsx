@@ -6,15 +6,14 @@ import {
   Select,
   TextField,
   Typography,
-  styled,
   Button,
+  SelectChangeEvent,
 } from "@mui/material";
-import { ICategory } from "@/pages/types";
+import { ICategory } from "@/types/types";
 import admin_texts from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import getJwtToken from "@/utils/getJwtToken";
-import { useRouter } from "next/router";
 import { API_BASE_URL } from "@/tmp/endpoints";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
@@ -59,7 +58,7 @@ const UpdateCategory = () => {
     }
   }, [selectValue, updatedtLogoFile]);
 
-  const handleSelectChange = useCallback((event: any) => {
+  const handleSelectChange = useCallback((event: SelectChangeEvent) => {
     setSelectValue(event.target.value);
   }, []);
 

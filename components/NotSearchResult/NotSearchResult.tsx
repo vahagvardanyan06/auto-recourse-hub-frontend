@@ -1,8 +1,9 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import notSearchResult_texts from "@/messages/notSearchResult";
+import { v4 as uuidv4 } from "uuid";
 
 const NotSearchResult = () => {
   const language = useSelector(selectLanguage);
@@ -12,7 +13,7 @@ const NotSearchResult = () => {
         <Typography>{notSearchResult_texts.title[language]}</Typography>
         <div className="flex flex-col gap-2">
           {notSearchResult_texts.reasons[language].map((reason) => (
-            <li>{reason}</li>
+            <li key={uuidv4()}>{reason}</li>
           ))}
         </div>
       </div>

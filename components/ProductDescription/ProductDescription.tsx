@@ -3,6 +3,7 @@ import IProductDescription from "./types";
 import product_description_texts from "@/messages/productDesciption";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
+import React from "react";
 
 const ProductDescription = ({ description }: IProductDescription) => {
   const language = useSelector(selectLanguage);

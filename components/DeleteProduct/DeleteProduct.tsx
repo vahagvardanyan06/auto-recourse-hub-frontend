@@ -1,18 +1,19 @@
 import {
-  Button,
   MenuItem,
   Select,
   Typography,
   CircularProgress,
+  SelectChangeEvent,
 } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import deleteProduct from "@/utils/deleteProduct";
 import admin_texts from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
-import { ICategory, IProduct } from "@/pages/types";
+import { ICategory, IProduct } from "@/types/types";
 import { API_BASE_URL } from "@/tmp/endpoints";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
+import { v4 as uuidv4 } from "uuid";
 
 const DeleteProduct = () => {
   const { displayNotification } = useNotification();
@@ -48,7 +49,7 @@ const DeleteProduct = () => {
     }
   }, [selectValue, isLoading]);
 
-  const handleSelectChange = useCallback((event: any) => {
+  const handleSelectChange = useCallback((event: SelectChangeEvent) => {
     setSelectValue(event.target.value);
   }, []);
 
@@ -77,7 +78,9 @@ const DeleteProduct = () => {
           className="w-full"
         >
           {categories.map((category) => (
-            <MenuItem value={category.name}>{category.name}</MenuItem>
+            <MenuItem key={uuidv4()} value={category.name}>
+              {category.name}
+            </MenuItem>
           ))}
         </Select>
         {currentProdcuts && (
@@ -85,6 +88,7 @@ const DeleteProduct = () => {
             {currentProdcuts &&
               currentProdcuts.map((product) => (
                 <CloseCard
+                  key={uuidv4()}
                   url={product.images[0]?.url}
                   closeCallback={() => handleProductDelete(product.id)}
                 />

@@ -1,5 +1,3 @@
-import { ILanguages } from "@/constants/languages";
-
 export default interface IProductType {
   src: string;
   type: string;
@@ -8,4 +6,5 @@ export default interface IProductType {
   onContactButtonClick?: () => void;
   id?: string;
   category_name: string;
+  key?: string;
 }

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { IsSsrMobileContext } from "@/context/IsSsrMobileContext";
 import "@/styles/global.css";
 import { ThemeProvider } from "@mui/material/styles";
@@ -8,8 +10,9 @@ import { Suspense } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorPage from "@/components/ErrorBoundary";
+import { AppProps } from "next/app";
 
-function App({ Component, pageProps }: any) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <ErrorBoundary fallback={<ErrorPage />}>
       <Suspense fallback={<CircularProgress color="primary" />}>

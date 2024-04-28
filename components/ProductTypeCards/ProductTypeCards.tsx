@@ -2,7 +2,7 @@ import { Typography, Grid } from "@mui/material";
 import React, { useCallback } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import IProductTypeCards from "./types";
-import { ICategory } from "@/pages/types";
+import { ICategory } from "@/types/types";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "@/redux/selectors";
 import { useRouter } from "next/router";

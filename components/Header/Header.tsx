@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { AppBar, Container, Toolbar, useTheme } from "@mui/material";
+import { AppBar, Container, Toolbar } from "@mui/material";
 import Logo from "@/public/svg/logo/logo.png";
 import Image from "next/image";
 import SelectLanguage from "@/components/SelectLanguage";

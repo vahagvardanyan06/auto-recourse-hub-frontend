@@ -40,4 +40,17 @@ export interface ILanguages {
   us: string;
 }
 
+export interface ICategoryTypes {
+  data: ICategory;
+}
+
+export interface ISearch {
+  searchData: IProduct[];
+}
+
+export interface IProductById {
+  categoryData: ICategory;
+  productData: IProduct;
+}
+
 export default IApp;
