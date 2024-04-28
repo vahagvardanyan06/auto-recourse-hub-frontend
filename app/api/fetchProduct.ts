@@ -19,7 +19,7 @@ export const getServerSideProps = async (
 
   const categoryData = await category_res.json();
 
-  if (!categoryData || !productData) {
+  if (!categoryData || !productData?.id) {
     return {
       notFound: true,
     };
