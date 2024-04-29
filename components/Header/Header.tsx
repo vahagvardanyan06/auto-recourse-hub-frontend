@@ -14,6 +14,7 @@ const Header = () => {
 
   return (
     // TODOD :: Change AppBar's background color
+    // TODOD :: Change X overflowing
     <AppBar className="bg-yellow-400" position="fixed">
       <Container maxWidth="lg">
         <Toolbar className="flex justify-between gap-5">
