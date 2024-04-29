@@ -6,9 +6,9 @@ import { ISearch } from "../../types/types";
 import Products from "@/components/Products";
 import { Container } from "@mui/material";
 
-const Search = ({ searchData }: ISearch) => {
+const Search = ({ searchData, searchKeyWord }: ISearch) => {
   return (
-    <Layout>
+    <Layout title={searchKeyWord}>
       <Container maxWidth="lg">
         {searchData ? <Products products={searchData} /> : <NotSearchResult />}
       </Container>

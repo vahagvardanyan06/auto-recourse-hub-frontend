@@ -46,6 +46,7 @@ export interface ICategoryTypes {
 
 export interface ISearch {
   searchData: IProduct[];
+  searchKeyWord: string;
 }
 
 export interface IProductById {

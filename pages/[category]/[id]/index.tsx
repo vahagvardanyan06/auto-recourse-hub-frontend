@@ -23,7 +23,7 @@ const Page = ({ categoryData, productData }: IProductById) => {
   }, [productData]);
 
   return (
-    <Layout>
+    <Layout title={productData.product_name[language]}>
       <Container maxWidth="lg" className="w-full gap-3 flex flex-col">
         <PreviewCarousel images={previewImages} />
         <Typography> {productData.product_name[language]} </Typography>

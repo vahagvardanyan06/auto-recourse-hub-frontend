@@ -22,6 +22,7 @@ const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   return {
     props: {
       searchData: searchResult.length ? searchResult : null,
+      searchKeyWord: q,
     },
   };
 };

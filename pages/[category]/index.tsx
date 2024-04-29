@@ -11,7 +11,7 @@ const Page = ({ data: { category_name, products } }: ICategoryTypes) => {
   const language = useSelector(selectLanguage);
 
   return (
-    <Layout>
+    <Layout title={category_name[language]}>
       <Container maxWidth="lg" className="w-full gap-5 flex flex-col">
         <div className="w-full flex content-center justify-center">
           <Typography className="capitalize font-serif text-lg">
