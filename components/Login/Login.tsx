@@ -40,7 +40,7 @@ const Login = () => {
     setIsLoading(true);
     const data = new FormData(event.currentTarget);
 
-    const res = await fetch(`${API_BASE_URL}/auth/signin`, {
+    const res = await fetch(`https://kargo.am/api/auth/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
