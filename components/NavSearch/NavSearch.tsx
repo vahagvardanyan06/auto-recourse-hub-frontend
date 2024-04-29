@@ -62,6 +62,12 @@ const NavSearch = () => {
     [push, searchValue]
   );
 
+  const handleSearchClick = useCallback(() => {
+    if (searchValue) {
+      push(`/search?q=${searchValue}`);
+    }
+  }, [push, searchValue]);
+
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setSearchValue(event.target.value);
@@ -72,8 +78,8 @@ const NavSearch = () => {
   return (
     <div className="flex items-center">
       <form onSubmit={handleSubmit}>
-        <Search>
-          <SearchIconWrapper className="cursor-pointer">
+        <Search onClick={handleSearchClick}>
+          <SearchIconWrapper>
             <SearchIcon className="text-slate-800" />
           </SearchIconWrapper>
           <StyledInputBase
