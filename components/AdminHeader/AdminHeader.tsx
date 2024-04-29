@@ -16,33 +16,32 @@ function AdminHeader({ activePage, setIsActivePage }: IAdminHeader) {
         value={activePage}
         onChange={(_, value) => handleTabChange(value)}
         textColor="inherit"
+        variant="scrollable"
       >
-        <div className="overflow-scroll">
-          <Tab
-            value={adminPages.CREATE_CATEGORY}
-            label={adminPages.CREATE_CATEGORY}
-          />
-          <Tab
-            value={adminPages.DELETE_CATEGORY}
-            label={adminPages.DELETE_CATEGORY}
-          />
-          <Tab
-            value={adminPages.CREATE_PRODUCT}
-            label={adminPages.CREATE_PRODUCT}
-          />
-          <Tab
-            value={adminPages.DELETE_PRODUCT}
-            label={adminPages.DELETE_PRODUCT}
-          />
-          <Tab
-            value={adminPages.UPDATE_CATEGORY}
-            label={adminPages.UPDATE_CATEGORY}
-          />
-          <Tab
-            value={adminPages.UPDATE_PRODUCT}
-            label={adminPages.UPDATE_PRODUCT}
-          />
-        </div>
+        <Tab
+          value={adminPages.CREATE_CATEGORY}
+          label={adminPages.CREATE_CATEGORY}
+        />
+        <Tab
+          value={adminPages.DELETE_CATEGORY}
+          label={adminPages.DELETE_CATEGORY}
+        />
+        <Tab
+          value={adminPages.CREATE_PRODUCT}
+          label={adminPages.CREATE_PRODUCT}
+        />
+        <Tab
+          value={adminPages.DELETE_PRODUCT}
+          label={adminPages.DELETE_PRODUCT}
+        />
+        <Tab
+          value={adminPages.UPDATE_CATEGORY}
+          label={adminPages.UPDATE_CATEGORY}
+        />
+        <Tab
+          value={adminPages.UPDATE_PRODUCT}
+          label={adminPages.UPDATE_PRODUCT}
+        />
       </Tabs>
     </AppBar>
   );
