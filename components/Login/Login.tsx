@@ -12,7 +12,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { InputAdornment } from "@mui/material";
 import { Visibility } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { API_BASE_URL } from "@/tmp/endpoints";
 import { useRouter } from "next/router";
 import tokenKey from "@/constants/token";
 import getJwtToken from "@/utils/getJwtToken";
