@@ -7,8 +7,7 @@ class AppDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* TODO :: Change title to kargo.am */}
-          <title>auto recource hub</title>
+          <title>kargo.am</title>
         </Head>
         <body>
           <Main />

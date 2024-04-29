@@ -13,9 +13,7 @@ const Header = () => {
   }, [push]);
 
   return (
-    // TODOD :: Change AppBar's background color
-    // TODOD :: Change X overflowing
-    <AppBar className="bg-yellow-400" position="fixed">
+    <AppBar position="fixed" sx={{ backgroundColor: "rgb(250 204 21)" }}>
       <Container maxWidth="lg">
         <Toolbar className="flex justify-between gap-5">
           <Image
