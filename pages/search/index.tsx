@@ -8,7 +8,7 @@ import { Container } from "@mui/material";
 
 const Search = ({ searchData, searchKeyWord }: ISearch) => {
   return (
-    <Layout title={searchKeyWord}>
+    <Layout title={searchKeyWord + " - Kargo.am"}>
       <Container maxWidth="lg">
         {searchData ? <Products products={searchData} /> : <NotSearchResult />}
       </Container>

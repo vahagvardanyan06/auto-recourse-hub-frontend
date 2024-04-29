@@ -66,9 +66,15 @@ export default function Footer() {
         </div>
       </Box>
       <div className="mb-2">
-        <Typography variant="body2" color="text.secondary" align="center">
-          <Link color="inherit" href="http://kargo.am/">
-            kargo.am
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          align="center"
+          className="flex justify-center gap-1"
+        >
+          ©
+          <Link color="inherit" href="https://kargo.am/">
+            Kargo.am
           </Link>{" "}
           {new Date().getFullYear()}
           {"."}

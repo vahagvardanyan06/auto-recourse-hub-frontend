@@ -5,7 +5,7 @@ import Head from "next/head";
 
 export default function RootLayout({
   children,
-  title = "kargo.am",
+  title = "Kargo.am",
 }: Readonly<{
   children: React.ReactNode;
   title?: string;
