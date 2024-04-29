@@ -1,5 +1,5 @@
-import { API_BASE_URL } from "@/tmp/endpoints";
 import getJwtToken from "./getJwtToken";
+import { API_URL } from "@/constants/admin";
 
 const postProduct = async (data: any) => {
   const TOKEN = getJwtToken();
@@ -25,7 +25,7 @@ const postProduct = async (data: any) => {
       });
     }
 
-    const res = await fetch(`${API_BASE_URL}/products`, {
+    const res = await fetch(`${API_URL}/products`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${TOKEN}`,

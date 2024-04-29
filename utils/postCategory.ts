@@ -1,5 +1,5 @@
-import { API_BASE_URL } from "@/tmp/endpoints";
 import getJwtToken from "./getJwtToken";
+import { API_URL } from "@/constants/admin";
 
 export interface IOptions {
   category_name: {
@@ -20,7 +20,7 @@ const postCategory = async (options: IOptions) => {
   formData.append("logo", options.logo, options.logo.name);
 
   try {
-    const res = await fetch(`${API_BASE_URL}/category`, {
+    const res = await fetch(`${API_URL}/category`, {
       method: "POST",
       body: formData,
       headers: {

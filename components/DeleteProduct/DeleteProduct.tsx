@@ -7,10 +7,9 @@ import {
 } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import deleteProduct from "@/utils/deleteProduct";
-import admin_texts from "@/constants/admin";
+import admin_texts, { API_URL } from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
 import { ICategory, IProduct } from "@/types/types";
-import { API_BASE_URL } from "@/tmp/endpoints";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
 import { v4 as uuidv4 } from "uuid";
@@ -29,7 +28,7 @@ const DeleteProduct = () => {
 
   useEffect(() => {
     (async () => {
-      const categories_res = await fetch(`${API_BASE_URL}/category`);
+      const categories_res = await fetch(`${API_URL}/category`);
       const result_categories = await categories_res.json();
 
       setCategories(result_categories);
@@ -40,7 +39,7 @@ const DeleteProduct = () => {
     if (selectValue && !isLoading) {
       (async () => {
         const products_res = await fetch(
-          `${API_BASE_URL}/category/name/${selectValue}`
+          `${API_URL}/category/name/${selectValue}`
         );
         const products = await products_res.json();
 

@@ -59,6 +59,8 @@ const admin_texts = {
   },
 };
 
+export const API_URL = "https://kargo.am/api";
+
 export const adminPages = {
   CREATE_CATEGORY: "Create Category",
   DELETE_CATEGORY: "Delete category",

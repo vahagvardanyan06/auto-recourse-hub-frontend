@@ -1,4 +1,4 @@
-import admin_texts from "@/constants/admin";
+import admin_texts, { API_URL } from "@/constants/admin";
 import { TextField, Typography, Button, Divider } from "@mui/material";
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -6,7 +6,6 @@ import { ILogo_url, IProduct } from "@/types/types";
 import getJwtToken from "@/utils/getJwtToken";
 import CloseCard from "../CloseCard/CloseCard";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { API_BASE_URL } from "@/tmp/endpoints";
 import LoadingButton from "@mui/lab/LoadingButton";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
@@ -57,7 +56,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/products`);
+        const res = await fetch(`${API_URL}/products`);
         const data = await res.json();
         setProducts(data.products);
       } catch (err) {
@@ -117,7 +116,7 @@ const UpdateProduct = () => {
         }
         const TOKEN = getJwtToken();
 
-        await fetch(`${API_BASE_URL}/products/${selectedProduct.id}`, {
+        await fetch(`${API_URL}/products/${selectedProduct.id}`, {
           method: "PATCH",
           headers: {
             Authorization: `Bearer ${TOKEN}`,

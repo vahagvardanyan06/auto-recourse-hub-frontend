@@ -10,11 +10,10 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { ICategory } from "@/types/types";
-import admin_texts from "@/constants/admin";
+import admin_texts, { API_URL } from "@/constants/admin";
 import CloseCard from "../CloseCard/CloseCard";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import getJwtToken from "@/utils/getJwtToken";
-import { API_BASE_URL } from "@/tmp/endpoints";
 import useNotification from "@/hooks/useNotification";
 import admin_messages from "@/messages/admin";
 
@@ -34,7 +33,7 @@ const UpdateCategory = () => {
 
   useEffect(() => {
     (async () => {
-      const categories_res = await fetch(`${API_BASE_URL}/category`);
+      const categories_res = await fetch(`${API_URL}/category`);
       const categories_result = await categories_res.json();
 
       setCategories(categories_result);
@@ -46,7 +45,7 @@ const UpdateCategory = () => {
     if (selectValue) {
       (async () => {
         const category_res = await fetch(
-          `${API_BASE_URL}/category/name/${selectValue}`
+          `${API_URL}/category/name/${selectValue}`
         );
         const category = await category_res.json();
 
@@ -114,7 +113,7 @@ const UpdateCategory = () => {
 
         const TOKEN = getJwtToken();
         const response = await fetch(
-          `${API_BASE_URL}/category/${selectedCategory.id}`,
+          `${API_URL}/category/${selectedCategory.id}`,
           {
             method: "PATCH",
             headers: {

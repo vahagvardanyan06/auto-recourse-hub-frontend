@@ -1,8 +1,8 @@
-import { API_BASE_URL } from "@/tmp/endpoints";
+import { API_URL } from "@/constants/admin";
 
 const fetchCategories = async () => {
   try {
-    const res = await fetch(`${API_BASE_URL}/category`);
+    const res = await fetch(`${API_URL}/category`);
     const categories_response = await res.json();
     return categories_response;
   } catch (err) {
