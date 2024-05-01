@@ -1,4 +1,4 @@
-import { Typography, Grid } from "@mui/material";
+import { Typography } from "@mui/material";
 import React, { useCallback } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import IProductTypeCards from "./types";
@@ -22,9 +22,9 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
   );
 
   return (
-    <Grid container justifyContent="center" spacing={isMobile ? 2 : 4}>
+    <div className="flex w-full overflow-scroll gap-5">
       {categories.map((item: ICategory) => (
-        <Grid item key={item.id} spacing={8}>
+        <>
           <div
             className="flex flex-col items-center justify-center gap-4 cursor-pointer"
             onClick={() => handleProductTypeClick(item.name)}
@@ -32,10 +32,10 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
           >
             <img
               src={item.logo_url.url}
-              height={200}
-              width={200}
+              height={isMobile ? 100 : 200}
+              width={isMobile ? 100 : 200}
               style={{ maxHeight: 200 }}
-              className="object-contain rounded-md"
+              className="object-contain rounded-full"
             />
             <Typography
               style={{
@@ -47,9 +47,9 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
               {item.category_name[language]}
             </Typography>
           </div>
-        </Grid>
+        </>
       ))}
-    </Grid>
+    </div>
   );
 };
 
