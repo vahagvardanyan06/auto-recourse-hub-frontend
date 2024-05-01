@@ -22,7 +22,7 @@ const ProductTypeCards = ({ categories }: IProductTypeCards) => {
   );
 
   return (
-    <div className="flex w-full overflow-scroll gap-5">
+    <div className="flex w-full overflow-scroll gap-5 justify-center">
       {categories.map((item: ICategory) => (
         <>
           <div
