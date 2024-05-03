@@ -7,19 +7,16 @@ const footerTexts = {
     },
     description: {
       ru: `
-         Наша организация обеспечивает перевозки грузов, автомобилей, автогигантов любого типа, веса, размера в/из Армении.
-         Мы работаем в Армении и за пределами Армении около 10 лет.
-         За время работы Мы накопили большой опыт и большую ответственность, что очень важно для всех нас.
+      Наша организация предоставляет услуги по перевозке грузов, автомобилей и транспортных гигантов любого типа,
+       веса и размера в/из Армении. Мы работаем как в Армении, так и за её пределами уже около 10 лет.
+      За время работы мы приобрели значительный опыт и высокий уровень ответственности, что является важным для всех нас.
       `,
       us: `
-         Our organization provides transportation of any type, weight, size of cargo, cars, auto giants to and from Armenia.
-         We have been working in Armenia and outside Armenia for about 10 years.
-         During our work, We have gained a lot of experience and a lot of responsibility, which is very important for all of us.
+      Our organization provides transportation services for cargo of any type, weight, and size, including cars and oversized vehicles, to and from Armenia. We have been operating both within and outside of Armenia for about 10 years.
+      During our operations, we have gained significant experience and a high level of responsibility, which are essential for all of us.
       `,
       am: `
-         Մեր կազմակերպությունը ներկայացնում է՝ Հայաստանում և Հայաստանից, յուրաքանչյուր տեսակի, քաշի, չափի ապրանքների, մեքենաների, հսկա մեքենաների փոխադրում:
-         Աշխատում ենք Հայաստանում և հայաստանից դուրս, արդեն շուրջ 10 տարի:
-         Մեր աշխատանքի ընթացքում Մենք ձեռք ենք բերել մեծ փորձ և մեծ պատասխանատվություն, ինչը շատ կարևոր է բոլորիս համար:
+      Մեր կազմակերպությունը ներկայացնում է յուրաքանչյուր տեսակի, քաշի, չափի ապրանքների, մեքենաների, ինչպես նաև հսկա մեքենաների փոխադրում: Աշխատում ենք Հայաստանում և Հայաստանից դուրս արդեն շուրջ 10 տարի: Մեր աշխատանքի ընթացքում ձեռք ենք բերել մեծ փորձ և պատասխանատվություն, ինչը շատ կարևոր է բոլորիս համար:
       `,
     },
   },
