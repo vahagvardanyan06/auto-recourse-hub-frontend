@@ -9,11 +9,13 @@ import React from "react";
 const SimilarProducts = ({ products }: ISimilarProducts) => {
   const language = useSelector(selectLanguage);
   return (
-    <div className="flex flex-col gap-5">
-      <Divider />
-      <Typography>{similar_products_texts[language]}</Typography>
-      <Products products={products} />
-    </div>
+    Boolean(products.length) && (
+      <div className="flex flex-col gap-5">
+        <Divider />
+        <Typography>{similar_products_texts[language]}</Typography>
+        <Products products={products} />
+      </div>
+    )
   );
 };
 
